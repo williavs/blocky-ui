@@ -1,144 +1,130 @@
+import { Button } from '../components/Button';
+import { TextArea } from '../components/TextArea';
+import { Input } from '../components/Input';
+import { Checkbox } from '../components/Checkbox';
+import { Radio } from '../components/Radio';
+import { Switch } from '../components/Switch';
+import { Progress } from '../components/Progress';
+import { Spinner } from '../components/Spinner';
+import { Tabs } from '../components/Tabs';
+import { ComboBox } from '../components/ComboBox';
+import { Modal } from '../components/Modal';
+import { Toast } from '../components/Toast';
+import { Tooltip } from '../components/Tooltip';
+import { Badge } from '../components/Badge';
+import { Card } from '../components/Card';
 import { useState } from 'react';
-import { Tabs } from "../components/Tabs";
-import { Button } from "../components/Button";
-import { TextArea } from "../components/TextArea";
-import { Checkbox } from "../components/Checkbox";
-import { Radio } from "../components/Radio";
-import { Switch } from "../components/Switch";
-import { Select } from "../components/Select";
-import { Progress } from "../components/Progress";
-import { Spinner } from "../components/Spinner";
-import { Skeleton } from "../components/Skeleton";
-import { Toast } from "../components/Toast";
-import { Modal } from "../components/Modal";
-import { Tooltip } from "../components/Tooltip";
-import { Dropdown } from "../components/Dropdown";
-import { cn } from "../utils/cn";
-import { ArrowRight, Download, Info, ChevronDown } from "lucide-react";
-import { DataExample } from "../components/DataExample";
 
-export function Components() {
-  const [activeTab, setActiveTab] = useState("buttons");
-  const [showToast, setShowToast] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [status, setStatus] = useState("");
-  const [priority, setPriority] = useState("");
-  const [category, setCategory] = useState("");
+const tabs = [
+  {
+    label: 'Form Controls',
+    content: (
+      <div className="p-4">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <div>
+            <h2 className="text-2xl font-display font-bold">Form Controls</h2>
+            <p className="text-muted-foreground">Input components for collecting user data.</p>
+          </div>
 
-  const sections = [
-    {
-      label: 'Form Controls',
-      content: (
-        <div className="p-4">
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div>
-              <h2 className="text-2xl font-display font-bold">Form Controls</h2>
-              <p className="text-green-900">Input elements with our signature blocky style.</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Text Inputs */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Text Inputs</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Default Input</label>
+                  <Input placeholder="Enter your name" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Large TextArea</label>
+                  <TextArea placeholder="Write your message..." />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">ComboBox</label>
+                  <ComboBox
+                    options={[
+                      { label: 'Option 1', value: '1' },
+                      { label: 'Option 2', value: '2' },
+                      { label: 'Option 3', value: '3' },
+                    ]}
+                    placeholder="Select an option"
+                  />
+                </div>
+              </div>
             </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* TextArea */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Text Input</h3>
-                <TextArea
-                  label="Message"
-                  placeholder="Type your message here..."
-                />
-              </div>
 
-              {/* Select */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Select</h3>
-                <Select
-                  label="Status"
-                  value={status}
-                  onChange={setStatus}
-                  options={[
-                    { value: "active", label: "Active" },
-                    { value: "inactive", label: "Inactive" },
-                    { value: "pending", label: "Pending" }
-                  ]}
-                  placeholder="Select status..."
-                />
-                <p className="text-sm text-green-900">
-                  Selected: {status || 'None'}
-                </p>
-              </div>
-
-              {/* Example with error state */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Select with Error</h3>
-                <Select
-                  label="Priority"
-                  value={priority}
-                  onChange={setPriority}
-                  options={[
-                    { value: "low", label: "Low Priority" },
-                    { value: "medium", label: "Medium Priority" },
-                    { value: "high", label: "High Priority" }
-                  ]}
-                  error={!priority ? "Please select a priority level" : undefined}
-                  placeholder="Select priority..."
-                />
-                <p className="text-sm text-green-900">
-                  Selected: {priority || 'None'}
-                </p>
-              </div>
-
-              {/* Checkbox */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Checkbox</h3>
-                <div className="space-y-2">
-                  <Checkbox label="Default checkbox" />
-                  <Checkbox label="Checked checkbox" defaultChecked />
+            {/* Toggle Controls */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Toggle Controls</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card space-y-4">
+                <div className="flex items-center gap-2">
+                  <Checkbox id="terms" />
+                  <label htmlFor="terms" className="text-sm font-medium">
+                    Accept terms and conditions
+                  </label>
                 </div>
-              </div>
-
-              {/* Radio */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Radio</h3>
-                <div className="space-y-2">
-                  <Radio name="demo" label="Option 1" />
-                  <Radio name="demo" label="Option 2" />
+                <div className="flex items-center gap-2">
+                  <Switch id="notifications" />
+                  <label htmlFor="notifications" className="text-sm font-medium">
+                    Enable notifications
+                  </label>
                 </div>
-              </div>
-
-              {/* Switch */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Switch</h3>
                 <div className="space-y-2">
-                  <Switch label="Default switch" />
-                  <Switch label="Checked switch" defaultChecked />
+                  <div className="flex items-center gap-2">
+                    <Radio name="size" value="small" defaultChecked />
+                    <label className="text-sm font-medium">Small</label>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Radio name="size" value="medium" />
+                    <label className="text-sm font-medium">Medium</label>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Radio name="size" value="large" />
+                    <label className="text-sm font-medium">Large</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      ),
-    },
-    {
-      label: 'Buttons',
-      content: (
-        <div className="p-4">
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div>
-              <h2 className="text-2xl font-display font-bold">Buttons</h2>
-              <p className="text-green-900">Various button styles and states.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Variants</h3>
-                <div className="flex flex-wrap gap-4">
-                  <Button>Default</Button>
-                  <Button variant="outline">Outline</Button>
-                  <Button variant="ghost">Ghost</Button>
+      </div>
+    ),
+  },
+  {
+    label: 'Buttons',
+    content: (
+      <div className="p-4">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <div>
+            <h2 className="text-2xl font-display font-bold">Buttons</h2>
+            <p className="text-muted-foreground">Interactive button components for user actions.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Button Variants */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Button Variants</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card">
+                <div className="space-y-4">
+                  <Button className="w-full">Default Button</Button>
+                  <Button variant="outline" className="w-full">
+                    Outline Button
+                  </Button>
+                  <Button variant="ghost" className="w-full">
+                    Ghost Button
+                  </Button>
+                  <Button variant="download" className="w-full">
+                    Download Button
+                  </Button>
                 </div>
               </div>
+            </div>
 
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Sizes</h3>
-                <div className="flex flex-wrap items-center gap-4">
+            {/* Button Sizes */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Button Sizes</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card">
+                <div className="flex flex-wrap gap-4">
                   <Button size="sm">Small</Button>
                   <Button>Default</Button>
                   <Button size="lg">Large</Button>
@@ -147,265 +133,230 @@ export function Components() {
             </div>
           </div>
         </div>
-      ),
-    },
-    {
-      label: 'Feedback',
-      content: (
-        <div className="p-4">
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div>
-              <h2 className="text-2xl font-display font-bold">Feedback</h2>
-              <p className="text-green-900">Components for providing feedback to users.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Progress */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Progress</h3>
-                <div className="space-y-2">
-                  <Progress value={75} className="w-full" />
-                  <Progress value={50} variant="success" className="w-full" />
-                </div>
-              </div>
-
-              {/* Spinners */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Spinners</h3>
-                <div className="flex gap-8">
-                  <Spinner />
-                  <Spinner variant="dots" />
-                  <Spinner variant="blocks" />
-                </div>
-              </div>
-
-              {/* Toast */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Toast</h3>
-                <Button onClick={() => setShowToast(true)}>Show Toast</Button>
-              </div>
-
-              {/* Modal */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Modal</h3>
-                <Button onClick={() => setShowModal(true)}>Open Modal</Button>
-              </div>
-            </div>
+      </div>
+    ),
+  },
+  {
+    label: 'Feedback',
+    content: (
+      <div className="p-4">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <div>
+            <h2 className="text-2xl font-display font-bold">Feedback</h2>
+            <p className="text-muted-foreground">Components for providing feedback to users.</p>
           </div>
-        </div>
-      ),
-    },
-    {
-      label: 'Overlay',
-      content: (
-        <div className="p-4">
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div>
-              <h2 className="text-2xl font-display font-bold">Overlay</h2>
-              <p className="text-green-900">Components that appear above other content.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Tooltip */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Tooltip</h3>
-                <div className="flex flex-wrap gap-4">
-                  <Tooltip content="Default tooltip">
-                    <Button variant="outline">Hover me</Button>
-                  </Tooltip>
-                  <Tooltip content="Right tooltip" position="right">
-                    <Button variant="outline">Right</Button>
-                  </Tooltip>
-                </div>
-              </div>
 
-              {/* Dropdown */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Dropdown</h3>
-                <div className="flex flex-wrap gap-4">
-                  <Dropdown
-                    trigger={
-                      <Button variant="outline" className="gap-2">
-                        Menu
-                        <ChevronDown className="w-4 h-4" />
-                      </Button>
-                    }
-                    items={[
-                      { label: "Profile", onClick: () => {} },
-                      { label: "Settings", onClick: () => {} },
-                      { label: "Logout", onClick: () => {} },
-                    ]}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      label: 'Loading States',
-      content: (
-        <div className="p-4">
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div>
-              <h2 className="text-2xl font-display font-bold">Loading States</h2>
-              <p className="text-green-900">Components for showing loading and placeholder states.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Skeleton Text */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Text Skeleton</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Progress Indicators */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Progress</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card">
                 <div className="space-y-4">
-                  <Skeleton />
-                  <Skeleton lines={3} />
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="font-medium">Uploading...</span>
+                      <span className="text-muted-foreground">35%</span>
+                    </div>
+                    <Progress value={35} className="w-full" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="font-medium">Processing...</span>
+                      <span className="text-muted-foreground">65%</span>
+                    </div>
+                    <Progress value={65} className="w-full" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="font-medium">Completing...</span>
+                      <span className="text-muted-foreground">90%</span>
+                    </div>
+                    <Progress value={90} className="w-full" />
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Skeleton Shapes */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Shape Variants</h3>
-                <div className="flex flex-wrap gap-4 items-center">
-                  <Skeleton variant="avatar" />
-                  <Skeleton variant="button" />
-                </div>
-              </div>
-
-              {/* Skeleton Card */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Card Skeleton</h3>
-                <Skeleton variant="card" />
-              </div>
-
-              {/* Skeleton Image */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-display font-bold">Image Skeleton</h3>
-                <Skeleton variant="image" />
-              </div>
-
-              {/* Common Patterns */}
-              <div className="space-y-4 lg:col-span-2">
-                <h3 className="text-lg font-display font-bold">Common Patterns</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  {/* Profile Card Loading */}
-                  <div className="p-4 border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <div className="flex gap-4">
-                      <Skeleton variant="avatar" />
-                      <div className="flex-1">
-                        <Skeleton className="w-1/3 mb-2" />
-                        <Skeleton lines={2} />
-                      </div>
+            {/* Loading States */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Loading</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card">
+                <div className="space-y-6">
+                  <div className="flex items-center justify-around">
+                    <div className="text-center">
+                      <Spinner size="sm" />
+                      <p className="text-sm mt-2 text-muted-foreground">Small</p>
+                    </div>
+                    <div className="text-center">
+                      <Spinner />
+                      <p className="text-sm mt-2 text-muted-foreground">Default</p>
+                    </div>
+                    <div className="text-center">
+                      <Spinner size="lg" />
+                      <p className="text-sm mt-2 text-muted-foreground">Large</p>
                     </div>
                   </div>
-
-                  {/* Content Card Loading */}
-                  <div className="p-4 border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    <Skeleton variant="image" className="h-32 mb-4" />
-                    <Skeleton className="w-2/3 mb-2" />
-                    <Skeleton lines={2} />
+                  <div className="space-y-4">
+                    <Button className="w-full" isLoading>
+                      Loading...
+                    </Button>
+                    <Button variant="outline" className="w-full" isLoading>
+                      Saving Changes...
+                    </Button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      ),
-    },
-    {
-      label: 'Data Management',
-      content: (
-        <div className="p-4">
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div>
-              <h2 className="text-2xl font-display font-bold">Data Management</h2>
-              <p className="text-green-900">Example of data management with IndexedDB.</p>
+      </div>
+    ),
+  },
+  {
+    label: 'Overlay & Interactive',
+    content: (
+      <div className="p-4">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <div>
+            <h2 className="text-2xl font-display font-bold">Overlay & Interactive</h2>
+            <p className="text-muted-foreground">Components that appear above the page content.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Modal & Toast */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Dialogs</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card">
+                <div className="space-y-4">
+                  <ModalExample />
+                  <ToastExample />
+                </div>
+              </div>
             </div>
-            
-            <div className="space-y-6">
-              <div className="p-4 border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <DataExample />
+
+            {/* Tooltips & Badges */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-display font-bold">Tooltips & Badges</h3>
+              <div className="p-4 border-2 border-border rounded-lg bg-card">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <Tooltip content={<span className="text-gray-900">This is a tooltip</span>}>
+                      <Button variant="outline">Hover me</Button>
+                    </Tooltip>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge>Default</Badge>
+                    <Badge variant="outline">Outline</Badge>
+                    <Badge variant="success">Success</Badge>
+                    <Badge variant="error">Error</Badge>
+                    <Badge variant="default">Primary</Badge>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ),
-    },
-  ];
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <div className="flex-1 container mx-auto px-4 py-8">
-        <div className="text-center space-y-4 mb-12">
-          <h1 className="text-5xl font-display font-bold tracking-tight">
-            Components
-          </h1>
-          <p className="text-green-900 text-lg max-w-2xl mx-auto">
-            Explore our collection of beautiful and accessible components
-          </p>
-        </div>
-
-        <Tabs tabs={sections} />
-      </div>
-
-      <footer className="border-t-2 border-black bg-white py-6 mt-8">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-green-900">
-              Built with ❤️ using our blocky design system
-            </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://github.com/williavs/blocky-ui"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-green-900 hover:text-green-800 transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="/docs"
-                className="text-sm text-green-900 hover:text-green-800 transition-colors"
-              >
-                Documentation
-              </a>
+          {/* Cards */}
+          <div>
+            <h3 className="text-lg font-display font-bold mb-4">Cards</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card className="p-6">
+                <h4 className="text-lg font-display font-bold mb-2">Basic Card</h4>
+                <p className="text-muted-foreground mb-4">A simple card with some content.</p>
+                <Button variant="outline" size="sm">Learn More</Button>
+              </Card>
+              <Card className="p-6 bg-primary">
+                <h4 className="text-lg font-display font-bold mb-2 text-gray-900">Featured Card</h4>
+                <p className="text-gray-900/80 mb-4">A card with primary background.</p>
+                <Button size="sm" className="text-gray-900">Get Started</Button>
+              </Card>
             </div>
           </div>
         </div>
-      </footer>
-
-      {/* Global Toast Container */}
-      <div className="fixed bottom-4 right-4 left-4 flex flex-col gap-2 z-50 pointer-events-none">
-        {showToast && (
-          <Toast
-            variant="success"
-            onClose={() => setShowToast(false)}
-            className="pointer-events-auto w-full max-w-xl mx-auto"
-          >
-            <p className="font-medium">Success!</p>
-            <p className="text-sm">Your action has been completed.</p>
-          </Toast>
-        )}
       </div>
+    ),
+  },
+];
 
-      {/* Global Modal */}
+// Example components for Modal and Toast
+function ModalExample() {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
       <Modal
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         title="Example Modal"
       >
         <div className="space-y-4">
-          <p>This is an example modal with our blocky design style!</p>
-          <div className="flex justify-end gap-3">
-            <Button variant="outline" onClick={() => setShowModal(false)}>
+          <div className="text-gray-900">
+            <h3 className="text-lg font-semibold mb-2">Example Modal</h3>
+            <p>This is an example modal dialog.</p>
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button 
+              variant="outline" 
+              onClick={() => setIsOpen(false)}
+              className="text-gray-900"
+            >
               Cancel
             </Button>
-            <Button onClick={() => setShowModal(false)}>
+            <Button 
+              onClick={() => setIsOpen(false)}
+              className="text-gray-900"
+            >
               Confirm
             </Button>
           </div>
         </div>
       </Modal>
+    </div>
+  );
+}
+
+function ToastExample() {
+  const [isVisible, setIsVisible] = useState(false);
+  return (
+    <div className="relative">
+      <Button 
+        variant="outline"
+        onClick={() => setIsVisible(true)}
+      >
+        Show Toast
+      </Button>
+      {isVisible && (
+        <div className="absolute top-16 left-0 right-0">
+          <Toast
+            variant="success"
+            onClose={() => setIsVisible(false)}
+          >
+            <div className="flex flex-col gap-1">
+              <p className="font-semibold">Success</p>
+              <p className="text-sm">Your changes have been saved.</p>
+            </div>
+          </Toast>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Components() {
+  return (
+    <div className="min-h-screen p-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center space-y-4 mb-12">
+          <h1 className="text-5xl font-display font-bold tracking-tight">
+            Components
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Explore our collection of beautiful and accessible components
+          </p>
+        </div>
+
+        <Tabs tabs={tabs} />
+      </div>
     </div>
   );
 } 

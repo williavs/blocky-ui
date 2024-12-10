@@ -65,43 +65,43 @@ body {
     --inline-code-fg: rgb(20, 83, 45);
   }
 
-  [data-theme="dark"] {
+  :root[data-theme="dark"] {
     --primary: rgb(134, 239, 172);      /* green-300 */
     --primary-light: rgb(20, 83, 45);    /* green-900 */
     --primary-dark: rgb(240, 253, 244);  /* green-50 */
     
     --background: rgb(17, 24, 39);       /* gray-900 */
-    --foreground: rgb(240, 253, 244);    /* green-50 */
+    --foreground: rgb(229, 231, 235);    /* gray-200 */
     
-    --card: rgb(24, 33, 47);            /* Slightly lighter than background */
-    --card-foreground: rgb(240, 253, 244);
+    --card: rgb(31, 41, 55);            /* gray-800 */
+    --card-foreground: rgb(229, 231, 235); /* gray-200 */
     
-    --popover: rgb(24, 33, 47);
-    --popover-foreground: rgb(240, 253, 244);
+    --popover: rgb(31, 41, 55);         /* gray-800 */
+    --popover-foreground: rgb(229, 231, 235); /* gray-200 */
     
-    --menu: rgb(24, 33, 47);
-    --menu-foreground: rgb(240, 253, 244);
+    --menu: rgb(31, 41, 55);            /* gray-800 */
+    --menu-foreground: rgb(229, 231, 235); /* gray-200 */
     
-    --border: rgb(134, 239, 172);       /* green-300 for better visibility */
-    --shadow: rgba(240, 253, 244, 0.15); /* Light shadow for dark mode */
-    --shadow-hover: rgba(240, 253, 244, 0.25); /* Lighter shadow for hover */
+    --border: rgb(75, 85, 99);          /* gray-600 */
+    --shadow: rgba(0, 0, 0, 0.3);       /* Subtle shadow for dark mode */
+    --shadow-hover: rgba(0, 0, 0, 0.4); /* Slightly stronger shadow for hover */
     
-    --input: rgb(24, 33, 47);
-    --ring: rgb(134, 239, 172);
+    --input: rgb(31, 41, 55);           /* gray-800 */
+    --ring: rgb(134, 239, 172);         /* green-300 */
     
-    --accent: rgb(134, 239, 172);       /* green-300 */
-    --accent-foreground: rgb(17, 24, 39);
+    --accent: rgb(31, 41, 55);          /* gray-800 */
+    --accent-foreground: rgb(229, 231, 235); /* gray-200 */
     
-    --destructive: rgb(254, 202, 202);
-    --destructive-foreground: rgb(127, 29, 29);
+    --destructive: rgb(248, 113, 113);  /* red-400 */
+    --destructive-foreground: rgb(254, 226, 226); /* red-100 */
     
-    --success: rgb(134, 239, 172);
-    --warning: rgb(234, 179, 8);
-    --error: rgb(239, 68, 68);
-    --info: rgb(59, 130, 246);
+    --success: rgb(134, 239, 172);      /* green-300 */
+    --warning: rgb(234, 179, 8);        /* yellow-500 */
+    --error: rgb(239, 68, 68);          /* red-500 */
+    --info: rgb(59, 130, 246);          /* blue-500 */
 
-    --muted: rgb(24, 33, 47);
-    --muted-foreground: rgba(240, 253, 244, 0.7);
+    --muted: rgb(31, 41, 55);           /* gray-800 */
+    --muted-foreground: rgb(156, 163, 175); /* gray-400 */
 
     /* Code block specific */
     --code-bg: rgb(31, 41, 55);
@@ -110,6 +110,16 @@ body {
     --code-shadow: rgba(240, 253, 244, 0.15);
     --inline-code-bg: rgb(31, 41, 55);
     --inline-code-fg: rgb(134, 239, 172);
+  }
+
+  html {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
@@ -139,27 +149,44 @@ body {
 }
 
 .hljs-keyword {
-  @apply text-purple-500 dark:text-purple-300;
+  @apply text-purple-600 dark:text-purple-300;
 }
 
 .hljs-string {
-  @apply text-green-600 dark:text-green-300;
+  @apply text-blue-600 dark:text-blue-300;
+}
+
+.hljs-number {
+  @apply text-orange-600 dark:text-orange-300;
+}
+
+.hljs-function {
+  @apply text-indigo-600 dark:text-indigo-300;
 }
 
 .hljs-title {
   @apply text-blue-600 dark:text-blue-300;
 }
 
-.hljs-function {
-  @apply text-yellow-600 dark:text-yellow-300;
+.hljs-comment {
+  @apply text-gray-500 dark:text-gray-400;
 }
 
-.hljs-params {
+.hljs-literal {
+  @apply text-teal-600 dark:text-teal-300;
+}
+
+/* Documentation specific code colors */
+code {
   @apply text-foreground;
 }
 
-.hljs-comment {
-  @apply text-gray-500 dark:text-gray-400;
+code.text-green-600 {
+  @apply dark:text-blue-300;
+}
+
+.dark code.text-green-400 {
+  @apply text-blue-300;
 }
 
 @keyframes float {

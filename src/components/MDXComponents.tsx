@@ -127,7 +127,7 @@ export const MDXComponents = {
         className={cn(
           "font-mono text-sm",
           isInline
-            ? "relative rounded border border-border bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm"
+            ? "relative rounded border border-border bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm text-foreground"
             : "relative block overflow-x-auto bg-card text-foreground p-4",
           className
         )}

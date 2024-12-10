@@ -39,10 +39,10 @@ export function Button({
         "relative inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50",
         "border-2 border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)]",
         {
-          "bg-primary text-foreground": variant === "default",
+          "bg-primary text-foreground dark:text-gray-900": variant === "default",
           "bg-transparent": variant === "outline",
           "bg-transparent border-transparent shadow-none hover:bg-accent hover:shadow-none hover:translate-x-0 hover:translate-y-0": variant === "ghost",
-          "bg-[#D1FAE5] text-foreground hover:bg-[#A7F3D0]": variant === "download",
+          "bg-[#D1FAE5] text-foreground dark:text-gray-900 hover:bg-[#A7F3D0]": variant === "download",
         },
         {
           "h-10 px-4 text-sm": size === "default",

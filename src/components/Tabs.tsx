@@ -26,7 +26,7 @@ export function Tabs({ tabs, className, defaultTab = 0 }: TabsProps) {
               "px-4 py-2 rounded-md border-2 transition-all whitespace-nowrap font-display",
               "focus:outline-none focus:ring-2 focus:ring-[--ring]",
               activeTab === index
-                ? "border-[--border] bg-primary shadow-[4px_4px_0px_0px_var(--shadow-hover)]"
+                ? "border-[--border] bg-primary shadow-[4px_4px_0px_0px_var(--shadow-hover)] text-foreground dark:text-gray-900"
                 : "border-transparent hover:border-[--border] hover:shadow-[4px_4px_0px_0px_var(--shadow)]",
               "text-foreground hover:text-foreground"
             )}

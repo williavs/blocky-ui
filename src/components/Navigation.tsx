@@ -63,7 +63,7 @@ export function Navigation({ className }: NavigationProps) {
           "fixed top-0 left-0 h-screen w-[300px] text-menu-foreground border-r-2 border-border shadow-[4px_0_0_0_rgba(0,0,0,1)] z-40",
           "transform transition-transform duration-300 ease-in-out",
           isOpen ? "translate-x-0" : "-translate-x-full",
-          theme === 'light' ? "bg-white" : "bg-menu"
+          theme === 'light' ? "bg-white" : "bg-[#1F2937]"
         )}
       >
         <div className="p-6 h-full flex flex-col">

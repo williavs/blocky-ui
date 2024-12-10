@@ -15,10 +15,10 @@ export function Home() {
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FFB324]/20 rounded-full blur-3xl" />
         </div>
-        <h1 className="text-6xl font-display font-bold tracking-tight mb-6">
+        <h1 className="text-6xl font-display font-bold tracking-tight mb-6 text-foreground">
           Blocky Design System
         </h1>
-        <p className="text-xl text-green-900 max-w-2xl mx-auto mb-12">
+        <p className="text-xl text-primary-dark max-w-2xl mx-auto mb-12">
           A playful, modern design system with bold borders and crisp shadows. 
           Build beautiful interfaces with our ready-to-use components.
         </p>
@@ -39,16 +39,16 @@ export function Home() {
 
         {/* Quick Links */}
         <div className="mt-8 flex items-center justify-center gap-4">
-          <Link to="/scripts" className="text-sm text-green-900 hover:text-green-700 flex items-center gap-1">
+          <Link to="/scripts" className="text-sm text-primary-dark hover:text-foreground flex items-center gap-1">
             <FileCode className="w-4 h-4" />
             Export Scripts
           </Link>
-          <span className="text-green-900">•</span>
-          <Link to="/docs/getting-started/installation" className="text-sm text-green-900 hover:text-green-700">
+          <span className="text-primary-dark">•</span>
+          <Link to="/docs/getting-started/installation" className="text-sm text-primary-dark hover:text-foreground">
             Installation Guide
           </Link>
-          <span className="text-green-900">•</span>
-          <Link to="/components" className="text-sm text-green-900 hover:text-green-700">
+          <span className="text-primary-dark">•</span>
+          <Link to="/components" className="text-sm text-primary-dark hover:text-foreground">
             Component Library
           </Link>
         </div>
@@ -61,8 +61,8 @@ export function Home() {
                 <Blocks className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <h3 className="font-display font-bold">Components</h3>
-                <p className="text-sm text-green-900">30+ Ready to use</p>
+                <h3 className="font-display font-bold text-foreground">Components</h3>
+                <p className="text-sm text-primary-dark">30+ Ready to use</p>
               </div>
             </div>
             <Progress value={75} size="sm" className="mb-2" />
@@ -78,8 +78,8 @@ export function Home() {
                 <Palette className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <h3 className="font-display font-bold">Themeable</h3>
-                <p className="text-sm text-green-900">Customize with ease</p>
+                <h3 className="font-display font-bold text-foreground">Themeable</h3>
+                <p className="text-sm text-primary-dark">Customize with ease</p>
               </div>
             </div>
             <div className="grid grid-cols-4 gap-2">
@@ -101,8 +101,8 @@ export function Home() {
                 <Zap className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <h3 className="font-display font-bold">Fast</h3>
-                <p className="text-sm text-green-900">Zero-config setup</p>
+                <h3 className="font-display font-bold text-foreground">Fast</h3>
+                <p className="text-sm text-primary-dark">Zero-config setup</p>
               </div>
             </div>
             <div className="flex items-center justify-around">
@@ -118,10 +118,10 @@ export function Home() {
       <section className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-4xl font-display font-bold mb-6">
+            <h2 className="text-4xl font-display font-bold mb-6 text-foreground">
               Beautiful & Accessible Components
             </h2>
-            <p className="text-lg text-green-900 mb-8">
+            <p className="text-lg text-primary-dark mb-8">
               Our components are built with accessibility in mind, ensuring your applications 
               are usable by everyone. Each component comes with proper ARIA attributes and 
               keyboard navigation support.
@@ -159,10 +159,10 @@ export function Home() {
       {/* Call to Action */}
       <section className="text-center">
         <Card className="max-w-3xl mx-auto p-12 bg-[#FFB324]/10">
-          <h2 className="text-4xl font-display font-bold mb-6">
+          <h2 className="text-4xl font-display font-bold mb-6 text-foreground">
             Ready to Get Started?
           </h2>
-          <p className="text-lg text-green-900 mb-8 max-w-xl mx-auto">
+          <p className="text-lg text-primary-dark mb-8 max-w-xl mx-auto">
             Join the growing community of developers building beautiful interfaces 
             with Blocky Design System.
           </p>

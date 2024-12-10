@@ -114,7 +114,7 @@ export function Documentation() {
       <div className="flex-1 overflow-y-auto">
         <div className="max-w-3xl mx-auto py-16 px-8">
           <MDXProvider components={{ ...MDXComponents, wrapper: ({ children }) => children }}>
-            <article className="prose prose-green dark:prose-invert prose-headings:font-display prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-pre:bg-card prose-pre:border-2 prose-pre:border-border prose-pre:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:prose-pre:shadow-[4px_4px_0px_0px_rgba(134,239,172,0.25)] max-w-none">
+            <article className="prose dark:prose-invert prose-headings:font-display prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-pre:bg-card prose-pre:border-2 prose-pre:border-border prose-pre:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:prose-pre:shadow-[4px_4px_0px_0px_rgba(134,239,172,0.25)] max-w-none">
               {isLoading ? (
                 <LoadingState />
               ) : error ? (
