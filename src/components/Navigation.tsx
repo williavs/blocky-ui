@@ -17,7 +17,7 @@ export function Navigation({ className }: NavigationProps) {
     { name: 'Home', href: '/', icon: Home },
     { name: 'Components', href: '/components', icon: Blocks },
     { name: 'Documentation', href: '/docs', icon: FileText },
-    { name: 'GitHub', href: 'https://github.com/williavs', icon: Github, external: true },
+    { name: 'GitHub', href: 'https://github.com/williavs/blocky-ui', icon: Github, external: true },
   ];
 
   return (
@@ -60,9 +60,10 @@ export function Navigation({ className }: NavigationProps) {
       {/* Menu Panel */}
       <div
         className={cn(
-          "fixed top-0 left-0 h-screen w-[300px] bg-menu text-menu-foreground border-r-2 border-border shadow-[4px_0_0_0_rgba(0,0,0,1)] z-40",
+          "fixed top-0 left-0 h-screen w-[300px] text-menu-foreground border-r-2 border-border shadow-[4px_0_0_0_rgba(0,0,0,1)] z-40",
           "transform transition-transform duration-300 ease-in-out",
-          isOpen ? "translate-x-0" : "-translate-x-full"
+          isOpen ? "translate-x-0" : "-translate-x-full",
+          theme === 'light' ? "bg-white" : "bg-menu"
         )}
       >
         <div className="p-6 h-full flex flex-col">
@@ -98,7 +99,8 @@ export function Navigation({ className }: NavigationProps) {
                 >
                   <div className="flex items-center gap-3">
                     <div className={cn(
-                      "p-1.5 rounded-md border-2 border-border bg-menu",
+                      "p-1.5 rounded-md border-2 border-border",
+                      theme === 'light' ? "bg-white" : "bg-background",
                       "transition-transform duration-200 group-hover:scale-110",
                       isHovered && "rotate-[-5deg]"
                     )}>
@@ -126,7 +128,10 @@ export function Navigation({ className }: NavigationProps) {
                 "flex items-center gap-3"
               )}
             >
-              <div className="p-1.5 rounded-md border-2 border-border bg-menu">
+              <div className={cn(
+                "p-1.5 rounded-md border-2 border-border",
+                theme === 'light' ? "bg-white" : "bg-background"
+              )}>
                 {theme === 'light' ? (
                   <Moon className="w-4 h-4" />
                 ) : (

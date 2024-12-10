@@ -2,15 +2,14 @@
 /// <reference types="@mdx-js/react" />
 
 declare module '*.mdx' {
-  import type { ComponentType } from 'react';
-  import type { MDXProps } from '@mdx-js/react';
-  
+  import type { ComponentProps, ComponentType } from 'react';
+
   export const frontmatter: {
     title: string;
-    slug: string;
-    order: number;
+    description: string;
+    [key: string]: any;
   };
-  
-  const MDXContent: ComponentType<MDXProps>;
-  export default MDXContent;
+
+  const MDXComponent: ComponentType<ComponentProps<'div'>>;
+  export default MDXComponent;
 } 

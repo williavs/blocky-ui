@@ -7,6 +7,7 @@ order: 2
 import { Card } from '../../../components/Card';
 import { Button } from '../../../components/Button';
 import { Badge } from '../../../components/Badge';
+import { Blocks } from 'lucide-react';
 
 # Card
 
@@ -33,138 +34,77 @@ import { Card } from '@blocky/react';
 
 A simple card with some content.
 
-<Card className="p-6">
-  <h3 className="text-xl font-bold mb-2">Welcome Back</h3>
-  <p className="text-green-900">
-    This is a basic card component with some text content.
-  </p>
-</Card>
+<div className="not-prose">
+  <Card className="p-6">
+    <h3 className="text-xl font-bold mb-2">Welcome Back</h3>
+    <p className="text-green-900">
+      This is a basic card component with some text content.
+    </p>
+  </Card>
+</div>
 
-```tsx
-<Card className="p-6">
-  <h3 className="text-xl font-bold mb-2">Welcome Back</h3>
-  <p className="text-green-900">
-    This is a basic card component with some text content.
-  </p>
-</Card>
-```
+### Card with Header
 
-### Interactive Card
+A card with a structured header section.
 
-A card with interactive elements like buttons and badges.
-
-<Card className="p-6">
-  <div className="flex items-start justify-between mb-4">
-    <div>
-      <h3 className="text-xl font-bold mb-2">Project Status</h3>
-      <p className="text-green-900">Current project overview and actions.</p>
+<div className="not-prose">
+  <Card className="p-6">
+    <div className="flex items-center gap-4 mb-4">
+      <div className="p-3 rounded-md border-2 border-black bg-green-100 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <Blocks className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="font-display font-bold">Components</h3>
+        <p className="text-sm text-green-900">30+ Ready to use</p>
+      </div>
     </div>
-    <Badge variant="success">Active</Badge>
-  </div>
-  <div className="flex gap-3">
-    <Button size="sm">View Details</Button>
-    <Button size="sm" variant="outline">Dismiss</Button>
-  </div>
-</Card>
-
-```tsx
-<Card className="p-6">
-  <div className="flex items-start justify-between mb-4">
-    <div>
-      <h3 className="text-xl font-bold mb-2">Project Status</h3>
-      <p className="text-green-900">Current project overview and actions.</p>
-    </div>
-    <Badge variant="success">Active</Badge>
-  </div>
-  <div className="flex gap-3">
-    <Button size="sm">View Details</Button>
-    <Button size="sm" variant="outline">Dismiss</Button>
-  </div>
-</Card>
-```
-
-### Nested Cards
-
-Cards can be nested to create complex layouts.
-
-<Card className="p-6">
-  <h3 className="text-xl font-bold mb-4">Dashboard</h3>
-  <div className="grid grid-cols-2 gap-4">
-    <Card className="p-4 bg-green-50">
-      <h4 className="font-bold mb-2">Statistics</h4>
-      <p className="text-green-900">Monthly overview</p>
-    </Card>
-    <Card className="p-4 bg-green-50">
-      <h4 className="font-bold mb-2">Activity</h4>
-      <p className="text-green-900">Recent actions</p>
-    </Card>
-  </div>
-</Card>
-
-```tsx
-<Card className="p-6">
-  <h3 className="text-xl font-bold mb-4">Dashboard</h3>
-  <div className="grid grid-cols-2 gap-4">
-    <Card className="p-4 bg-green-50">
-      <h4 className="font-bold mb-2">Statistics</h4>
-      <p className="text-green-900">Monthly overview</p>
-    </Card>
-    <Card className="p-4 bg-green-50">
-      <h4 className="font-bold mb-2">Activity</h4>
-      <p className="text-green-900">Recent actions</p>
-    </Card>
-  </div>
-</Card>
-```
+    <p className="text-green-900">
+      Cards can include icons, badges, and other components to create rich interfaces.
+    </p>
+  </Card>
+</div>
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | `undefined` | Additional CSS classes to apply |
-| `children` | `ReactNode` | `undefined` | The content to render inside the card |
-
-## Design Guidelines
-
-### When to use
-
-- **Content Grouping**: Use cards to group related information and actions
-- **Visual Hierarchy**: Create clear sections in your layout
-- **Interactive Areas**: Define clickable or interactive regions
-- **Dashboard Elements**: Display statistics, summaries, or status information
-
-### Best Practices
-
-1. Maintain consistent padding within cards (usually 24px)
-2. Use clear visual hierarchy with headings and content
-3. Keep card content focused and concise
-4. Use appropriate spacing between cards
-5. Consider card interactions (hover, focus states)
-6. Use background variations sparingly
-
-### Layout Patterns
-
-Common card layouts include:
-
-1. **Header + Content**: Title at the top, content below
-2. **Media + Content**: Image or media followed by text
-3. **Content + Actions**: Content with buttons at the bottom
-4. **Stats Display**: Numbers or metrics with labels
-5. **List Items**: Repeating content in a consistent format
-
-## Accessibility
-
-The Card component follows accessibility best practices:
-
-- Uses semantic HTML structure
-- Maintains proper heading hierarchy
-- Ensures sufficient color contrast
-- Supports keyboard navigation for interactive elements
-- Includes proper ARIA attributes when needed
-
-## Related Components
-
-- [CardHeader](/docs/components/card-header) - For consistent card headers
-- [CardFooter](/docs/components/card-footer) - For card action areas
-- [CardMedia](/docs/components/card-media) - For cards with images or media
-- [CardGrid](/docs/components/card-grid) - For responsive card layouts 
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">variant</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">'default' | 'interactive'</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">'default'</td>
+            <td className="px-4 py-2">The visual style variant of the card</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The content to display inside the card</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -356,7 +356,7 @@ export function Components() {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/williavs/blocky-ui"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-green-900 hover:text-green-800 transition-colors"

@@ -4,312 +4,346 @@ slug: form-controls
 order: 3
 ---
 
+import { Input } from '../../../components/Input';
 import { TextArea } from '../../../components/TextArea';
+import { Select } from '../../../components/Select';
 import { Checkbox } from '../../../components/Checkbox';
 import { Radio } from '../../../components/Radio';
 import { Switch } from '../../../components/Switch';
-import { Card } from '../../../components/Card';
 
 # Form Controls
 
-Our form controls are designed to be accessible, consistent, and beautiful. Each component follows our signature blocky style while maintaining proper form functionality.
+A collection of form control components with our signature blocky style. Each component is designed to be accessible and easy to use.
 
-## TextArea
+## Import
 
-The TextArea component is used for multi-line text input. It supports labels, placeholder text, error states, and more.
+```tsx
+import { Input, TextArea, Select, Checkbox, Radio, Switch } from '@blocky/react';
+```
 
-### Basic Usage
+## Usage
 
-<Card className="p-6 space-y-4">
-  <TextArea
-    label="Message"
-    placeholder="Type your message here..."
+```tsx
+<Input placeholder="Enter your name" />
+<TextArea placeholder="Enter your message" />
+<Select options={[{ value: 'option1', label: 'Option 1' }]} />
+<Checkbox label="Accept terms" />
+<Radio label="Select this option" />
+<Switch label="Enable feature" />
+```
+
+## Examples
+
+### Input
+
+<div className="not-prose space-y-4">
+  <Input placeholder="Enter your name" />
+  <Input type="email" placeholder="Enter your email" />
+  <Input type="password" placeholder="Enter your password" />
+</div>
+
+### TextArea
+
+<div className="not-prose">
+  <TextArea placeholder="Enter your message" />
+</div>
+
+### Select
+
+<div className="not-prose">
+  <Select
+    options={[
+      { value: 'option1', label: 'Option 1' },
+      { value: 'option2', label: 'Option 2' },
+      { value: 'option3', label: 'Option 3' },
+    ]}
   />
-</Card>
+</div>
 
-```tsx
-<TextArea
-  label="Message"
-  placeholder="Type your message here..."
-/>
-```
+### Checkbox
 
-### With Error State
+<div className="not-prose space-y-2">
+  <Checkbox label="Option 1" />
+  <Checkbox label="Option 2" />
+  <Checkbox label="Option 3" />
+</div>
 
-<Card className="p-6 space-y-4">
-  <TextArea
-    label="Message"
-    placeholder="Type your message here..."
-    error="Please enter at least 20 characters"
-  />
-</Card>
+### Radio
 
-```tsx
-<TextArea
-  label="Message"
-  placeholder="Type your message here..."
-  error="Please enter at least 20 characters"
-/>
-```
+<div className="not-prose space-y-2">
+  <Radio name="group1" label="Option 1" />
+  <Radio name="group1" label="Option 2" />
+  <Radio name="group1" label="Option 3" />
+</div>
 
-### Disabled State
+### Switch
 
-<Card className="p-6 space-y-4">
-  <TextArea
-    label="Message"
-    placeholder="This textarea is disabled"
-    disabled
-  />
-</Card>
-
-```tsx
-<TextArea
-  label="Message"
-  placeholder="This textarea is disabled"
-  disabled
-/>
-```
-
-## Checkbox
-
-The Checkbox component is used for multiple selection options. It features a smooth animation and clear focus states.
-
-### Basic Usage
-
-<Card className="p-6 space-y-4">
-  <div className="space-y-2">
-    <Checkbox label="Accept terms and conditions" />
-    <Checkbox label="Subscribe to newsletter" defaultChecked />
-  </div>
-</Card>
-
-```tsx
-<Checkbox label="Accept terms and conditions" />
-<Checkbox label="Subscribe to newsletter" defaultChecked />
-```
-
-### With Error State
-
-<Card className="p-6 space-y-4">
-  <Checkbox 
-    label="Accept terms and conditions" 
-    error="You must accept the terms to continue" 
-  />
-</Card>
-
-```tsx
-<Checkbox 
-  label="Accept terms and conditions" 
-  error="You must accept the terms to continue" 
-/>
-```
-
-### Disabled States
-
-<Card className="p-6 space-y-4">
-  <div className="space-y-2">
-    <Checkbox label="Disabled unchecked" disabled />
-    <Checkbox label="Disabled checked" disabled defaultChecked />
-  </div>
-</Card>
-
-```tsx
-<Checkbox label="Disabled unchecked" disabled />
-<Checkbox label="Disabled checked" disabled defaultChecked />
-```
-
-## Radio
-
-The Radio component is used for single selection from a list of options. It includes smooth animations and clear focus states.
-
-### Basic Usage
-
-<Card className="p-6 space-y-4">
-  <div className="space-y-2">
-    <Radio name="size" label="Small" value="sm" />
-    <Radio name="size" label="Medium" value="md" defaultChecked />
-    <Radio name="size" label="Large" value="lg" />
-  </div>
-</Card>
-
-```tsx
-<Radio name="size" label="Small" value="sm" />
-<Radio name="size" label="Medium" value="md" defaultChecked />
-<Radio name="size" label="Large" value="lg" />
-```
-
-### With Error State
-
-<Card className="p-6 space-y-4">
-  <div className="space-y-2">
-    <Radio 
-      name="plan" 
-      label="Free" 
-      value="free"
-      error="Please select a plan" 
-    />
-    <Radio 
-      name="plan" 
-      label="Pro" 
-      value="pro"
-      error="Please select a plan" 
-    />
-  </div>
-</Card>
-
-```tsx
-<Radio 
-  name="plan" 
-  label="Free" 
-  value="free"
-  error="Please select a plan" 
-/>
-<Radio 
-  name="plan" 
-  label="Pro" 
-  value="pro"
-  error="Please select a plan" 
-/>
-```
-
-## Switch
-
-The Switch component is used for toggling between two states. It features a smooth sliding animation and clear focus states.
-
-### Basic Usage
-
-<Card className="p-6 space-y-4">
-  <div className="space-y-2">
-    <Switch label="Notifications" />
-    <Switch label="Dark mode" defaultChecked />
-  </div>
-</Card>
-
-```tsx
-<Switch label="Notifications" />
-<Switch label="Dark mode" defaultChecked />
-```
-
-### With Description
-
-<Card className="p-6 space-y-4">
-  <Switch 
-    label="Notifications" 
-    description="Receive email notifications when there are updates"
-  />
-</Card>
-
-```tsx
-<Switch 
-  label="Notifications" 
-  description="Receive email notifications when there are updates"
-/>
-```
-
-### Disabled States
-
-<Card className="p-6 space-y-4">
-  <div className="space-y-2">
-    <Switch label="Disabled off" disabled />
-    <Switch label="Disabled on" disabled defaultChecked />
-  </div>
-</Card>
-
-```tsx
-<Switch label="Disabled off" disabled />
-<Switch label="Disabled on" disabled defaultChecked />
-```
+<div className="not-prose space-y-2">
+  <Switch label="Enable feature 1" />
+  <Switch label="Enable feature 2" />
+  <Switch label="Enable feature 3" />
+</div>
 
 ## Props
 
+### Input Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">type</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">'text'</td>
+            <td className="px-4 py-2">The type of input field</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">error</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the input is in an error state</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 ### TextArea Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | `undefined` | The label text for the textarea |
-| `placeholder` | `string` | `undefined` | Placeholder text |
-| `error` | `string` | `undefined` | Error message to display |
-| `disabled` | `boolean` | `false` | Whether the textarea is disabled |
-| `value` | `string` | `undefined` | Controlled value |
-| `defaultValue` | `string` | `undefined` | Default uncontrolled value |
-| `onChange` | `(e: ChangeEvent) => void` | `undefined` | Change event handler |
-| `className` | `string` | `undefined` | Additional CSS classes |
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">error</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the textarea is in an error state</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### Select Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">options</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">Array&lt;{'{'} value: string; label: string {'}'}&gt;</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">Array of options to display in the select</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">error</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the select is in an error state</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 ### Checkbox Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | `undefined` | The label text |
-| `checked` | `boolean` | `undefined` | Controlled checked state |
-| `defaultChecked` | `boolean` | `false` | Default uncontrolled checked state |
-| `disabled` | `boolean` | `false` | Whether the checkbox is disabled |
-| `error` | `string` | `undefined` | Error message to display |
-| `onChange` | `(checked: boolean) => void` | `undefined` | Change handler |
-| `className` | `string` | `undefined` | Additional CSS classes |
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">label</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">Label text for the checkbox</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">error</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the checkbox is in an error state</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 ### Radio Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `name` | `string` | **Required** | Group name for the radio button |
-| `label` | `string` | `undefined` | The label text |
-| `value` | `string` | **Required** | Value for the radio button |
-| `checked` | `boolean` | `undefined` | Controlled checked state |
-| `defaultChecked` | `boolean` | `false` | Default uncontrolled checked state |
-| `disabled` | `boolean` | `false` | Whether the radio is disabled |
-| `error` | `string` | `undefined` | Error message to display |
-| `onChange` | `(e: ChangeEvent) => void` | `undefined` | Change handler |
-| `className` | `string` | `undefined` | Additional CSS classes |
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">label</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">Label text for the radio button</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">error</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the radio button is in an error state</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 ### Switch Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | `undefined` | The label text |
-| `description` | `string` | `undefined` | Additional descriptive text |
-| `checked` | `boolean` | `undefined` | Controlled checked state |
-| `defaultChecked` | `boolean` | `false` | Default uncontrolled checked state |
-| `disabled` | `boolean` | `false` | Whether the switch is disabled |
-| `onChange` | `(checked: boolean) => void` | `undefined` | Change handler |
-| `className` | `string` | `undefined` | Additional CSS classes |
-
-## Accessibility
-
-All form controls follow WAI-ARIA guidelines:
-
-- Proper labeling with `aria-label` or `<label>` elements
-- Error states announced with `aria-invalid` and `aria-errormessage`
-- Focus management with visible focus indicators
-- Keyboard navigation support
-- Proper role attributes
-- Clear state changes announced to screen readers
-
-## Best Practices
-
-1. **Labels**: Always provide clear, descriptive labels
-2. **Error States**: Show clear error messages when validation fails
-3. **Grouping**: Use fieldsets to group related controls
-4. **Validation**: Validate on blur and form submission
-5. **Defaults**: Provide sensible default values when applicable
-6. **Spacing**: Maintain consistent spacing between form elements
-7. **Required Fields**: Clearly indicate required fields
-8. **Help Text**: Provide additional context when needed
-
-## Form Layout
-
-For optimal form layout:
-
-1. Use a single-column layout for better readability
-2. Group related fields together
-3. Align labels and fields consistently
-4. Maintain sufficient spacing between sections
-5. Place primary actions at the bottom
-6. Use clear section headings
-7. Keep forms as short as possible
-
-## Related Components
-
-- [Input](/docs/components/input) - For single-line text input
-- [Select](/docs/components/select) - For dropdown selection
-- [Form](/docs/components/form) - For form layout and validation
-- [FormField](/docs/components/form-field) - For consistent field styling 
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">label</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">Label text for the switch</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">error</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the switch is in an error state</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

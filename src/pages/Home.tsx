@@ -4,7 +4,7 @@ import { Card } from "../components/Card";
 import { Badge } from "../components/Badge";
 import { Progress } from "../components/Progress";
 import { Spinner } from "../components/Spinner";
-import { ArrowRight, Blocks, Box, Palette, Zap } from 'lucide-react';
+import { ArrowRight, Blocks, Box, Palette, Zap, FileCode, Github } from 'lucide-react';
 import { cn } from "../utils/cn";
 
 export function Home() {
@@ -23,13 +23,34 @@ export function Home() {
           Build beautiful interfaces with our ready-to-use components.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <Button size="lg" className="group">
-            Get Started
-            <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-          </Button>
-          <Button size="lg" variant="outline">
-            View on GitHub
-          </Button>
+          <Link to="/docs/getting-started/introduction">
+            <Button size="lg" className="group">
+              Get Started
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <a href="https://github.com/williavs/blocky-ui" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" variant="outline" className="group">
+              View on GitHub
+              <Github className="w-4 h-4 ml-2 transition-transform group-hover:translate-y-[-2px]" />
+            </Button>
+          </a>
+        </div>
+
+        {/* Quick Links */}
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <Link to="/scripts" className="text-sm text-green-900 hover:text-green-700 flex items-center gap-1">
+            <FileCode className="w-4 h-4" />
+            Export Scripts
+          </Link>
+          <span className="text-green-900">•</span>
+          <Link to="/docs/getting-started/installation" className="text-sm text-green-900 hover:text-green-700">
+            Installation Guide
+          </Link>
+          <span className="text-green-900">•</span>
+          <Link to="/components" className="text-sm text-green-900 hover:text-green-700">
+            Component Library
+          </Link>
         </div>
 
         {/* Component Preview */}
@@ -105,10 +126,12 @@ export function Home() {
               are usable by everyone. Each component comes with proper ARIA attributes and 
               keyboard navigation support.
             </p>
-            <Button variant="outline" size="lg" className="group">
-              Browse Components
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <Link to="/components">
+              <Button variant="outline" size="lg" className="group">
+                Browse Components
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
           </div>
 
           <div className="relative">
@@ -144,13 +167,17 @@ export function Home() {
             with Blocky Design System.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="group">
-              Install Now
-              <Box className="w-4 h-4 ml-2 transition-transform group-hover:translate-y-[-2px]" />
-            </Button>
-            <Button size="lg" variant="outline">
-              Read Docs
-            </Button>
+            <Link to="/docs/getting-started/installation">
+              <Button size="lg" className="group">
+                Install Now
+                <Box className="w-4 h-4 ml-2 transition-transform group-hover:translate-y-[-2px]" />
+              </Button>
+            </Link>
+            <Link to="/docs/getting-started/introduction">
+              <Button size="lg" variant="outline">
+                Read Docs
+              </Button>
+            </Link>
           </div>
         </Card>
       </section>

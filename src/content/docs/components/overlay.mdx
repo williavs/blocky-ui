@@ -179,3 +179,280 @@ function Demo() {
 - Use appropriate ARIA attributes
 - Consider screen reader announcements
 - Test with various input methods 
+
+## Props
+
+### Dialog Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">open</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the dialog is open</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">onOpenChange</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">(open: boolean) => void</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Callback when dialog open state changes</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### DialogTrigger Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">asChild</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether to merge props onto child element</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The trigger element</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### DialogContent Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The dialog content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### DialogHeader Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The header content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### DialogFooter Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The footer content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### DialogTitle Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The title content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### DialogDescription Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The description content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

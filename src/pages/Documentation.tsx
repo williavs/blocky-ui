@@ -43,7 +43,7 @@ function ErrorState({ error }: { error: Error }) {
   return (
     <div className="p-4 border-2 border-destructive rounded-lg bg-destructive/10 animate-in fade-in duration-300">
       <h2 className="text-destructive-foreground font-bold mb-2">Error Loading Documentation</h2>
-      <p className="text-destructive-foreground">{error.message}</p>
+      <div className="text-destructive-foreground">{error.message}</div>
     </div>
   );
 }
@@ -112,9 +112,9 @@ export function Documentation() {
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto">
-        <div className="max-w-3xl mx-auto p-8">
-          <MDXProvider components={MDXComponents}>
-            <div className="min-h-[200px]">
+        <div className="max-w-3xl mx-auto py-16 px-8">
+          <MDXProvider components={{ ...MDXComponents, wrapper: ({ children }) => children }}>
+            <article className="prose prose-green dark:prose-invert prose-headings:font-display prose-headings:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-pre:bg-card prose-pre:border-2 prose-pre:border-border prose-pre:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:prose-pre:shadow-[4px_4px_0px_0px_rgba(134,239,172,0.25)] max-w-none">
               {isLoading ? (
                 <LoadingState />
               ) : error ? (
@@ -135,7 +135,7 @@ export function Documentation() {
                   </Suspense>
                 </div>
               )}
-            </div>
+            </article>
           </MDXProvider>
         </div>
       </div>

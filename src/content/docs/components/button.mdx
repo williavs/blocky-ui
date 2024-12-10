@@ -1,122 +1,276 @@
 ---
 title: Button
-description: Interactive button component with multiple variants and sizes.
+description: "A versatile button component with multiple variants, sizes, and icon support."
 ---
 
-import { Button } from "@/components/Button"
-import { Download, Share } from "lucide-react"
+import { Button } from '../../../components/Button';
+import { Download, Share, ArrowRight, Loader2, Plus, Trash2 } from 'lucide-react';
 
 # Button
 
-Buttons allow users to trigger actions with a single click or tap.
+A versatile button component that follows our blocky design system with crisp borders, playful shadows, and smooth hover animations.
+
+## Import
+
+```tsx
+import { Button } from '@blocky/react';
+```
 
 ## Examples
 
 ### Variants
 
-Our button component comes with several variants to suit different needs:
+Our button component comes with several variants to suit different contexts and actions.
 
-<div className="flex flex-wrap gap-4">
-  <Button>Click me</Button>
-  <Button variant="outline">Outline</Button>
-  <Button variant="ghost">Ghost</Button>
-  <Button 
-    variant="download" 
-    leftIcon={<Download className="w-4 h-4" />}
-  >
+<div className="not-prose flex flex-wrap gap-4 [&>button]:min-w-[120px]">
+  <Button>
+    Default
+  </Button>
+  <Button variant="outline">
+    Outline
+  </Button>
+  <Button variant="ghost">
+    Ghost
+  </Button>
+  <Button variant="download">
     Download
   </Button>
-  <Button 
-    variant="outline" 
-    rightIcon={<Share className="w-4 h-4" />}
-  >
+</div>
+
+```tsx
+<Button>Default</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="download">Download</Button>
+```
+
+### Sizes
+
+Available in three sizes to accommodate different use cases.
+
+<div className="not-prose flex flex-wrap items-center gap-4">
+  <Button size="sm">
+    Small
+  </Button>
+  <Button>
+    Default
+  </Button>
+  <Button size="lg">
+    Large
+  </Button>
+</div>
+
+```tsx
+<Button size="sm">Small</Button>
+<Button>Default</Button>
+<Button size="lg">Large</Button>
+```
+
+### With Icons
+
+Buttons can include icons before or after the text using `leftIcon` or `rightIcon` props.
+
+<div className="not-prose flex flex-wrap gap-4">
+  <Button leftIcon={<Download className="w-4 h-4" />}>
+    Download
+  </Button>
+  <Button variant="outline" rightIcon={<ArrowRight className="w-4 h-4" />}>
+    Next Step
+  </Button>
+  <Button variant="ghost" leftIcon={<Plus className="w-4 h-4" />}>
+    Add Item
+  </Button>
+  <Button variant="download" rightIcon={<Share className="w-4 h-4" />}>
     Share
   </Button>
 </div>
 
 ```tsx
-import { Button } from "@/components/Button"
-import { Download, Share } from "lucide-react"
-
-// Default button
-<Button>Click me</Button>
-
-// Outline button
-<Button variant="outline">Outline</Button>
-
-// Ghost button
-<Button variant="ghost">Ghost</Button>
-
-// Download button
-<Button variant="download" leftIcon={<Download className="w-4 h-4" />}>
+<Button leftIcon={<Download className="w-4 h-4" />}>
   Download
 </Button>
 
-// Share button
-<Button variant="outline" rightIcon={<Share className="w-4 h-4" />}>
+<Button 
+  variant="outline" 
+  rightIcon={<ArrowRight className="w-4 h-4" />}
+>
+  Next Step
+</Button>
+
+<Button 
+  variant="ghost" 
+  leftIcon={<Plus className="w-4 h-4" />}
+>
+  Add Item
+</Button>
+
+<Button 
+  variant="download" 
+  rightIcon={<Share className="w-4 h-4" />}
+>
   Share
 </Button>
 ```
 
-### Sizes
-
-Buttons come in three sizes to accommodate different use cases:
-
-<div className="flex flex-wrap items-center gap-4">
-  <Button size="sm">Small</Button>
-  <Button>Default</Button>
-  <Button size="lg">Large</Button>
-</div>
-
-```tsx
-<Button size="sm">Small</Button>
-<Button size="default">Default</Button>
-<Button size="lg">Large</Button>
-```
-
 ### Loading State
 
-Buttons can show a loading state when processing an action:
+Buttons show a spinner when in loading state and automatically disable interaction.
 
-<div className="flex flex-wrap gap-4">
-  <Button isLoading>Loading</Button>
-  <Button variant="outline" isLoading>Loading</Button>
+<div className="not-prose flex flex-wrap gap-4">
+  <Button isLoading>
+    Loading
+  </Button>
+  <Button variant="outline" isLoading>
+    Processing
+  </Button>
+  <Button variant="download" isLoading leftIcon={<Download className="w-4 h-4" />}>
+    Downloading
+  </Button>
 </div>
 
 ```tsx
 <Button isLoading>Loading</Button>
-<Button variant="outline" isLoading>Loading</Button>
+<Button variant="outline" isLoading>Processing</Button>
+<Button 
+  variant="download" 
+  isLoading 
+  leftIcon={<Download className="w-4 h-4" />}
+>
+  Downloading
+</Button>
 ```
+
+### Interactive Examples
+
+Buttons feature smooth hover and active states with shadow animations.
+
+<div className="not-prose flex flex-wrap gap-4">
+  <Button className="min-w-[200px]" onClick={() => alert('Clicked!')}>
+    Click me!
+  </Button>
+  <Button 
+    variant="outline"
+    className="min-w-[200px]"
+    leftIcon={<Trash2 className="w-4 h-4" />}
+    onClick={() => confirm('Are you sure?')}
+  >
+    Delete Item
+  </Button>
+</div>
 
 ## Props
 
-The Button component accepts the following props:
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">variant</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400 whitespace-nowrap">
+                'default' | 'outline' | 'ghost' | 'download'
+              </code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">'default'</td>
+            <td className="px-4 py-2">The visual style variant of the button</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">size</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400 whitespace-nowrap">
+                'sm' | 'default' | 'lg'
+              </code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">'default'</td>
+            <td className="px-4 py-2">The size of the button</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">isLoading</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">When true, shows a loading spinner and disables the button</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">leftIcon</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Icon element to display before the button text</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">rightIcon</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Icon element to display after the button text</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">disabled</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">boolean</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">false</td>
+            <td className="px-4 py-2">Whether the button is disabled</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The content to display inside the button</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div className="mt-4 text-sm text-muted-foreground">
+      Plus all standard HTML button attributes.
+    </div>
+  </div>
+</div>
 
-- `variant`: "default" | "outline" | "ghost" | "download"
-- `size`: "sm" | "default" | "lg"
-- `isLoading`: boolean
-- `leftIcon`: React.ReactNode
-- `rightIcon`: React.ReactNode
-- `className`: string
-- `disabled`: boolean
+## Design Details
 
-Plus all standard button HTML attributes.
+### Styling
 
-## Design Notes
+- **Border**: 2px solid black border for strong definition
+- **Shadow**: 4px offset black shadow that grows on hover
+- **Animation**: Smooth translate and shadow transitions
+- **Icons**: 16x16px (w-4 h-4) for consistent sizing
+- **Font**: Medium weight for good contrast
 
-1. **Variants**
-   - Default: Primary action buttons
-   - Outline: Secondary actions
-   - Ghost: Subtle actions
-   - Download: For download actions
+### States
 
-2. **Icons**
-   - Can be placed before or after text
-   - Should be 16x16px (w-4 h-4) for default size
-   - Align naturally with text
+- **Hover**: Button lifts up (-2px) and shadow grows
+- **Active**: Button returns to original position
+- **Loading**: Shows spinner, disables interactions
+- **Disabled**: 50% opacity, maintains structure
 
-3. **States**
-   - Hover: Slight lift effect with larger shadow
-   - Active: Pressed down effect
-   - Loading: Shows spinner, disables button
-   - Disabled: Reduced opacity
+### Accessibility
+
+- Proper button role and semantics
+- Keyboard navigation support
+- Loading state properly conveyed
+- Sufficient color contrast
+- Clear focus indicators

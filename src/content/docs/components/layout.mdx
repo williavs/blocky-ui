@@ -156,3 +156,148 @@ import { Container } from "@/components/Container"
 - Use appropriate breakpoints for responsive designs
 - Consider content flow and readability
 - Account for dynamic content 
+
+## Props
+
+### Container Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">size</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">'sm' | 'default' | 'lg' | 'xl'</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">'default'</td>
+            <td className="px-4 py-2">The maximum width of the container</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The content to display inside the container</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### Section Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">variant</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">'default' | 'muted'</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">'default'</td>
+            <td className="px-4 py-2">The background style of the section</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The content to display inside the section</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+### Grid Props
+
+<div className="not-prose">
+  <div className="rounded-lg border-2 border-border bg-card p-4 my-6 overflow-hidden">
+    <div className="overflow-x-auto">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Prop</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold min-w-[200px]">Type</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Default</th>
+            <th className="border-b-2 border-border bg-muted px-4 py-2 text-left font-bold">Description</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border">
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">cols</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">number</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">1</td>
+            <td className="px-4 py-2">Number of columns in the grid</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">gap</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">number</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">4</td>
+            <td className="px-4 py-2">Gap between grid items in rem units</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">className</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">string</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">undefined</td>
+            <td className="px-4 py-2">Additional CSS classes to apply</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-mono text-sm font-semibold">children</td>
+            <td className="px-4 py-2">
+              <code className="text-sm text-green-600 dark:text-green-400">ReactNode</code>
+            </td>
+            <td className="px-4 py-2 font-mono text-sm">required</td>
+            <td className="px-4 py-2">The content to display inside the grid</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
