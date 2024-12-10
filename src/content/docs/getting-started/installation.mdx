@@ -1,0 +1,103 @@
+---
+title: Installation
+slug: installation
+order: 2
+---
+
+# Installation
+
+Follow these steps to add Blocky to your project.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- Node.js 14 or later
+- npm or yarn
+- React 17 or later
+
+## Setup Steps
+
+### 1. Install the Package
+
+First, install the Blocky package using npm or yarn:
+
+```bash
+# Using npm
+npm install @blocky/react
+
+# Using yarn
+yarn add @blocky/react
+```
+
+### 2. Add Tailwind CSS Configuration
+
+Create or update your `tailwind.config.js`:
+
+```js
+module.exports = {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@blocky/react/**/*.{js,jsx,ts,tsx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['DM Sans', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+### 3. Import Styles
+
+Add the following import to your root file (e.g., `App.tsx` or `index.tsx`):
+
+```tsx
+import '@blocky/react/styles.css';
+```
+
+### 4. Add Font Dependencies
+
+Add the required fonts to your HTML:
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+```
+
+## Verifying Installation
+
+To verify that everything is working, try adding a simple component:
+
+```tsx
+import { Button } from '@blocky/react';
+
+function App() {
+  return (
+    <div className="p-4">
+      <Button>
+        Hello Blocky!
+      </Button>
+    </div>
+  );
+}
+```
+
+Here's how it should look:
+
+<div className="p-4 border-2 border-black rounded-lg bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+  <Button>
+    Hello Blocky!
+  </Button>
+</div>
+
+## Next Steps
+
+Now that you have Blocky installed, you can:
+
+1. Browse our [Components](/docs/components) documentation
+2. Learn about [Customization](/docs/customization)
+3. Check out our [Examples](/docs/examples) 

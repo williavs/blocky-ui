@@ -1,0 +1,179 @@
+---
+title: Navigation Components
+description: Components that help users navigate through different sections and pages of your application.
+---
+
+# Navigation Components
+
+Navigation components provide intuitive ways for users to move through different sections of your application. This guide covers Tabs, Breadcrumbs, and Pagination.
+
+## Tabs
+
+The Tabs component organizes content into multiple panels, allowing users to switch between different views.
+
+```tsx
+import { Tabs } from "@/components/Tabs"
+
+function Demo() {
+  return (
+    <Tabs defaultValue="account">
+      <Tabs.List>
+        <Tabs.Trigger value="account">Account</Tabs.Trigger>
+        <Tabs.Trigger value="password">Password</Tabs.Trigger>
+        <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="account">
+        <h3>Account Settings</h3>
+        <p>Manage your account details here.</p>
+      </Tabs.Content>
+      <Tabs.Content value="password">
+        <h3>Change Password</h3>
+        <p>Update your password here.</p>
+      </Tabs.Content>
+      <Tabs.Content value="settings">
+        <h3>Preferences</h3>
+        <p>Customize your experience.</p>
+      </Tabs.Content>
+    </Tabs>
+  )
+}
+```
+
+### Components
+
+- `Tabs` - Main container component
+- `Tabs.List` - Container for tab triggers
+- `Tabs.Trigger` - Individual tab buttons
+- `Tabs.Content` - Content panel for each tab
+
+### Props
+
+#### Tabs
+- `defaultValue`: string - Initially active tab
+- `value`: string - Controlled value
+- `onValueChange`: (value: string) => void - Value change handler
+- `className`: string - Additional CSS classes
+
+#### Tabs.Trigger
+- `value`: string - Unique identifier for the tab
+- `disabled`: boolean - Disables the tab
+- `className`: string - Additional CSS classes
+
+## Breadcrumb
+
+The Breadcrumb component shows the current page's location within a navigational hierarchy.
+
+```tsx
+import { Breadcrumb } from "@/components/Breadcrumb"
+
+// Basic breadcrumb
+<Breadcrumb>
+  <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+  <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+  <Breadcrumb.Item>Categories</Breadcrumb.Item>
+</Breadcrumb>
+
+// With custom separator
+<Breadcrumb separator="→">
+  <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+  <Breadcrumb.Item href="/docs">Documentation</Breadcrumb.Item>
+  <Breadcrumb.Item>Components</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+### Components
+
+- `Breadcrumb` - Main container component
+- `Breadcrumb.Item` - Individual breadcrumb item
+
+### Props
+
+#### Breadcrumb
+- `separator`: React.ReactNode - Custom separator between items
+- `className`: string - Additional CSS classes
+
+#### Breadcrumb.Item
+- `href`: string - Link destination (optional)
+- `className`: string - Additional CSS classes
+- `current`: boolean - Indicates current page
+
+## Pagination
+
+The Pagination component enables navigation through multiple pages of content.
+
+```tsx
+import { Pagination } from "@/components/Pagination"
+
+function Demo() {
+  return (
+    <Pagination
+      total={100}
+      perPage={10}
+      currentPage={1}
+      onPageChange={(page) => console.log(`Navigate to page ${page}`)}
+    />
+  )
+}
+
+// With custom controls
+<Pagination
+  total={100}
+  perPage={10}
+  currentPage={1}
+  showControls
+  prevLabel="Previous"
+  nextLabel="Next"
+  onPageChange={(page) => handlePageChange(page)}
+/>
+```
+
+### Props
+
+- `total`: number - Total number of items
+- `perPage`: number - Items per page
+- `currentPage`: number - Current active page
+- `onPageChange`: (page: number) => void - Page change handler
+- `showControls`: boolean - Show prev/next buttons
+- `prevLabel`: string - Custom label for prev button
+- `nextLabel`: string - Custom label for next button
+- `className`: string - Additional CSS classes
+
+## Best Practices
+
+1. **Tabs**
+   - Use meaningful labels
+   - Keep tab names concise
+   - Maintain consistent content structure
+   - Consider mobile responsiveness
+   - Provide visual feedback for active state
+
+2. **Breadcrumbs**
+   - Keep paths logical and hierarchical
+   - Use clear and concise labels
+   - Ensure proper link functionality
+   - Consider truncation for long paths
+   - Maintain consistent styling
+
+3. **Pagination**
+   - Show appropriate number of pages
+   - Provide clear current page indicator
+   - Consider mobile-friendly controls
+   - Include prev/next navigation
+   - Show total items when relevant
+
+### Accessibility Guidelines
+
+- Ensure keyboard navigation works properly
+- Use appropriate ARIA labels
+- Maintain focus management
+- Provide clear visual indicators
+- Consider screen reader announcements
+- Test with various input methods
+
+### Responsive Considerations
+
+- Adapt navigation for different screen sizes
+- Consider touch targets on mobile
+- Use appropriate spacing
+- Test on various devices
+- Implement mobile-friendly alternatives when needed 

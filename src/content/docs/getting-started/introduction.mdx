@@ -1,0 +1,83 @@
+---
+title: Introduction
+slug: introduction
+order: 1
+---
+
+import { Button } from '../../../components/Button';
+import { Card } from '../../../components/Card';
+import { Badge } from '../../../components/Badge';
+
+# Introduction
+
+Welcome to the Blocky Design System documentation. This guide will help you get started with our component library and design principles.
+
+## What is Blocky?
+
+Blocky is a modern, playful design system that emphasizes bold borders, crisp shadows, and clean typography. It's built with React and Tailwind CSS, making it easy to integrate into your projects.
+
+## Key Features
+
+- 🎨 **Modern Design Language**: Bold, playful, and professional
+- 📦 **30+ Components**: Pre-built, customizable components
+- ♿️ **Accessibility**: ARIA-compliant and keyboard navigable
+- 🎯 **TypeScript Support**: Full type definitions included
+- 🎨 **Tailwind CSS**: Easy customization and extension
+
+## Example Usage
+
+Here's a simple example showing how to use Blocky components:
+
+```tsx
+import { Button, Card, Badge } from '@blocky/react';
+
+function Example() {
+  return (
+    <Card className="p-6">
+      <h2 className="text-2xl font-bold mb-4">
+        Welcome to Blocky
+      </h2>
+      
+      <div className="flex items-center gap-2 mb-4">
+        <Badge variant="success">New</Badge>
+        <Badge variant="outline">v1.0</Badge>
+      </div>
+      
+      <p className="text-gray-600 mb-6">
+        Start building beautiful interfaces with our 
+        ready-to-use components.
+      </p>
+      
+      <div className="flex gap-3">
+        <Button>Get Started</Button>
+        <Button variant="outline">Learn More</Button>
+      </div>
+    </Card>
+  );
+}
+```
+
+## Live Example
+
+Here's the same example rendered live:
+
+<Card className="p-6">
+  <h2 className="text-2xl font-bold mb-4">Welcome to Blocky</h2>
+  <div className="flex items-center gap-2 mb-4">
+    <Badge variant="success">New</Badge>
+    <Badge variant="outline">v1.0</Badge>
+  </div>
+  <p className="text-gray-600 mb-6">
+    Start building beautiful interfaces with our ready-to-use components.
+  </p>
+  <div className="flex gap-3">
+    <Button>Get Started</Button>
+    <Button variant="outline">Learn More</Button>
+  </div>
+</Card>
+
+## Next Steps
+
+1. [Install Blocky](/docs/getting-started/installation) in your project
+2. Browse our [Components](/docs/components) documentation
+3. Learn about [Customization](/docs/customization) 

@@ -1,0 +1,170 @@
+---
+title: Card
+slug: card
+order: 2
+---
+
+import { Card } from '../../../components/Card';
+import { Button } from '../../../components/Button';
+import { Badge } from '../../../components/Badge';
+
+# Card
+
+The Card component is a versatile container for grouping related content and actions. It features our signature blocky style with bold borders and crisp shadows.
+
+## Import
+
+```tsx
+import { Card } from '@blocky/react';
+```
+
+## Usage
+
+```tsx
+<Card>
+  <h3>Card Title</h3>
+  <p>Card content goes here.</p>
+</Card>
+```
+
+## Examples
+
+### Basic Card
+
+A simple card with some content.
+
+<Card className="p-6">
+  <h3 className="text-xl font-bold mb-2">Welcome Back</h3>
+  <p className="text-green-900">
+    This is a basic card component with some text content.
+  </p>
+</Card>
+
+```tsx
+<Card className="p-6">
+  <h3 className="text-xl font-bold mb-2">Welcome Back</h3>
+  <p className="text-green-900">
+    This is a basic card component with some text content.
+  </p>
+</Card>
+```
+
+### Interactive Card
+
+A card with interactive elements like buttons and badges.
+
+<Card className="p-6">
+  <div className="flex items-start justify-between mb-4">
+    <div>
+      <h3 className="text-xl font-bold mb-2">Project Status</h3>
+      <p className="text-green-900">Current project overview and actions.</p>
+    </div>
+    <Badge variant="success">Active</Badge>
+  </div>
+  <div className="flex gap-3">
+    <Button size="sm">View Details</Button>
+    <Button size="sm" variant="outline">Dismiss</Button>
+  </div>
+</Card>
+
+```tsx
+<Card className="p-6">
+  <div className="flex items-start justify-between mb-4">
+    <div>
+      <h3 className="text-xl font-bold mb-2">Project Status</h3>
+      <p className="text-green-900">Current project overview and actions.</p>
+    </div>
+    <Badge variant="success">Active</Badge>
+  </div>
+  <div className="flex gap-3">
+    <Button size="sm">View Details</Button>
+    <Button size="sm" variant="outline">Dismiss</Button>
+  </div>
+</Card>
+```
+
+### Nested Cards
+
+Cards can be nested to create complex layouts.
+
+<Card className="p-6">
+  <h3 className="text-xl font-bold mb-4">Dashboard</h3>
+  <div className="grid grid-cols-2 gap-4">
+    <Card className="p-4 bg-green-50">
+      <h4 className="font-bold mb-2">Statistics</h4>
+      <p className="text-green-900">Monthly overview</p>
+    </Card>
+    <Card className="p-4 bg-green-50">
+      <h4 className="font-bold mb-2">Activity</h4>
+      <p className="text-green-900">Recent actions</p>
+    </Card>
+  </div>
+</Card>
+
+```tsx
+<Card className="p-6">
+  <h3 className="text-xl font-bold mb-4">Dashboard</h3>
+  <div className="grid grid-cols-2 gap-4">
+    <Card className="p-4 bg-green-50">
+      <h4 className="font-bold mb-2">Statistics</h4>
+      <p className="text-green-900">Monthly overview</p>
+    </Card>
+    <Card className="p-4 bg-green-50">
+      <h4 className="font-bold mb-2">Activity</h4>
+      <p className="text-green-900">Recent actions</p>
+    </Card>
+  </div>
+</Card>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | `undefined` | Additional CSS classes to apply |
+| `children` | `ReactNode` | `undefined` | The content to render inside the card |
+
+## Design Guidelines
+
+### When to use
+
+- **Content Grouping**: Use cards to group related information and actions
+- **Visual Hierarchy**: Create clear sections in your layout
+- **Interactive Areas**: Define clickable or interactive regions
+- **Dashboard Elements**: Display statistics, summaries, or status information
+
+### Best Practices
+
+1. Maintain consistent padding within cards (usually 24px)
+2. Use clear visual hierarchy with headings and content
+3. Keep card content focused and concise
+4. Use appropriate spacing between cards
+5. Consider card interactions (hover, focus states)
+6. Use background variations sparingly
+
+### Layout Patterns
+
+Common card layouts include:
+
+1. **Header + Content**: Title at the top, content below
+2. **Media + Content**: Image or media followed by text
+3. **Content + Actions**: Content with buttons at the bottom
+4. **Stats Display**: Numbers or metrics with labels
+5. **List Items**: Repeating content in a consistent format
+
+## Accessibility
+
+The Card component follows accessibility best practices:
+
+- Uses semantic HTML structure
+- Maintains proper heading hierarchy
+- Ensures sufficient color contrast
+- Supports keyboard navigation for interactive elements
+- Includes proper ARIA attributes when needed
+
+## Related Components
+
+- [CardHeader](/docs/components/card-header) - For consistent card headers
+- [CardFooter](/docs/components/card-footer) - For card action areas
+- [CardMedia](/docs/components/card-media) - For cards with images or media
+- [CardGrid](/docs/components/card-grid) - For responsive card layouts 

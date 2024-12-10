@@ -1,0 +1,158 @@
+---
+title: Layout Components
+description: Core components for structuring content and creating consistent layouts across your application.
+---
+
+# Layout Components
+
+Layout components provide the foundation for organizing content and creating consistent, responsive layouts. This guide covers Cards, Grids, and Containers.
+
+## Card
+
+The Card component provides a flexible container for grouping related content and actions.
+
+```tsx
+import { Card } from "@/components/Card"
+
+// Basic card
+<Card>
+  <h3 className="text-lg font-semibold">Card Title</h3>
+  <p>Card content goes here.</p>
+</Card>
+
+// Card with header and footer
+<Card>
+  <Card.Header>
+    <Card.Title>Featured Article</Card.Title>
+    <Card.Description>A brief overview of the article</Card.Description>
+  </Card.Header>
+  <Card.Content>
+    <p>Main content area with detailed information...</p>
+  </Card.Content>
+  <Card.Footer>
+    <button>Read More</button>
+  </Card.Footer>
+</Card>
+```
+
+### Components
+
+- `Card` - Main container component
+- `Card.Header` - Container for card header content
+- `Card.Title` - Card title component
+- `Card.Description` - Optional description text
+- `Card.Content` - Main content area
+- `Card.Footer` - Container for actions or additional info
+
+### Props
+
+- `className`: string - Additional CSS classes
+- `children`: React.ReactNode - Card content
+
+## Grid
+
+The Grid component creates responsive grid layouts with configurable columns and gaps.
+
+```tsx
+import { Grid } from "@/components/Grid"
+
+// Basic grid with responsive columns
+<Grid>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Grid>
+
+// Custom columns and gap
+<Grid cols={4} gap={6}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+</Grid>
+
+// Responsive grid
+<Grid
+  cols={{
+    default: 1,
+    sm: 2,
+    md: 3,
+    lg: 4
+  }}
+>
+  {items.map(item => (
+    <div key={item.id}>{item.content}</div>
+  ))}
+</Grid>
+```
+
+### Props
+
+- `cols`: number | ResponsiveObject - Number of columns
+- `gap`: number - Gap size between grid items (in multiples of 4px)
+- `className`: string - Additional CSS classes
+- `children`: React.ReactNode - Grid items
+
+## Container
+
+The Container component centers content and maintains consistent max-width across different screen sizes.
+
+```tsx
+import { Container } from "@/components/Container"
+
+// Basic container
+<Container>
+  <h1>Page Title</h1>
+  <p>Content goes here...</p>
+</Container>
+
+// Container with custom max-width
+<Container maxWidth="xl">
+  <div>Wide content area</div>
+</Container>
+
+// Container with padding options
+<Container padding="lg">
+  <div>Content with larger padding</div>
+</Container>
+```
+
+### Props
+
+- `maxWidth`: "sm" | "md" | "lg" | "xl" | "2xl" | "full" - Maximum width preset
+- `padding`: "none" | "sm" | "md" | "lg" - Padding size
+- `className`: string - Additional CSS classes
+- `children`: React.ReactNode - Container content
+
+## Best Practices
+
+1. **Cards**
+   - Use for grouping related content
+   - Maintain consistent padding and spacing
+   - Consider hover and focus states
+   - Use appropriate hierarchy for content
+   - Keep card content focused and concise
+
+2. **Grids**
+   - Plan responsive breakpoints carefully
+   - Consider content size variations
+   - Use appropriate gap sizes
+   - Test with different content lengths
+   - Maintain visual balance
+
+3. **Containers**
+   - Choose appropriate max-widths for content
+   - Consider readability on different screens
+   - Use consistent padding across pages
+   - Account for nested containers
+   - Test responsive behavior
+
+### Layout Tips
+
+- Use semantic HTML within layout components
+- Maintain consistent spacing patterns
+- Consider content hierarchy
+- Test layouts across different screen sizes
+- Use appropriate breakpoints for responsive designs
+- Consider content flow and readability
+- Account for dynamic content 

@@ -1,0 +1,153 @@
+---
+title: Feedback Components
+description: Interactive components that provide visual feedback to users about system status and operations.
+---
+
+# Feedback Components
+
+Feedback components are essential UI elements that communicate the status of operations, loading states, and system messages to users. This guide covers Progress bars, Spinners, and Toast notifications.
+
+## Progress
+
+The Progress component visualizes the completion status of an operation, providing users with a clear indication of progress.
+
+```tsx
+import { Progress } from "@/components/Progress"
+
+// Basic usage
+<Progress value={60} />
+
+// With custom color
+<Progress value={80} className="bg-purple-500" />
+
+// Indeterminate progress
+<Progress />
+```
+
+### Props
+
+- `value`: number (0-100) - The current progress value
+- `className`: string - Additional CSS classes
+- `max`: number - Maximum value (defaults to 100)
+
+## Spinner
+
+The Spinner component indicates loading states and ongoing operations with an animated circular indicator.
+
+```tsx
+import { Spinner } from "@/components/Spinner"
+
+// Default spinner
+<Spinner />
+
+// Custom size
+<Spinner className="w-8 h-8" />
+
+// With text
+<div className="flex items-center gap-2">
+  <Spinner />
+  <span>Loading...</span>
+</div>
+```
+
+### Props
+
+- `className`: string - Additional CSS classes for customization
+- `aria-label`: string - Accessibility label (defaults to "Loading")
+
+## Toast
+
+Toast notifications provide brief, non-intrusive messages to users about the result of their actions.
+
+```tsx
+import { Toast } from "@/components/Toast"
+import { useToast } from "@/hooks/use-toast"
+
+function Demo() {
+  const { toast } = useToast()
+  
+  return (
+    <button
+      onClick={() => {
+        toast({
+          title: "Success",
+          description: "Your changes have been saved.",
+          variant: "success",
+        })
+      }}
+    >
+      Show Toast
+    </button>
+  )
+}
+```
+
+### Toast Options
+
+- `title`: string - The main message of the toast
+- `description`: string - Additional details (optional)
+- `variant`: "default" | "success" | "error" | "warning" - Toast style variant
+- `duration`: number - How long the toast should remain visible (in milliseconds)
+- `action`: React.ReactNode - Optional action button
+- `onClose`: () => void - Callback function when toast is dismissed
+
+### Variants
+
+```tsx
+// Success toast
+toast({
+  title: "Success",
+  description: "Operation completed successfully",
+  variant: "success",
+})
+
+// Error toast
+toast({
+  title: "Error",
+  description: "Something went wrong",
+  variant: "error",
+})
+
+// Warning toast
+toast({
+  title: "Warning",
+  description: "Please review your input",
+  variant: "warning",
+})
+```
+
+### With Actions
+
+```tsx
+toast({
+  title: "Changes saved",
+  description: "Your document has been updated.",
+  action: (
+    <button
+      onClick={() => handleUndo()}
+      className="text-sm font-medium underline"
+    >
+      Undo
+    </button>
+  ),
+})
+```
+
+## Best Practices
+
+1. **Progress Bars**
+   - Use for operations with known completion status
+   - Show indeterminate progress for unknown duration tasks
+   - Keep the UI responsive while showing progress
+
+2. **Spinners**
+   - Use for brief loading states
+   - Keep spinners reasonably sized
+   - Provide context when possible (e.g., "Loading data...")
+
+3. **Toast Notifications**
+   - Keep messages concise and clear
+   - Use appropriate variants for different message types
+   - Position toasts consistently
+   - Limit the number of simultaneous toasts
+   - Provide enough duration for users to read the message 

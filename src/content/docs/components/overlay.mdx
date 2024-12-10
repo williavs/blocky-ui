@@ -1,0 +1,181 @@
+---
+title: Overlay Components
+description: Components that display content in layers above the main interface, including modals, dropdowns, and tooltips.
+---
+
+# Overlay Components
+
+Overlay components create interactive layers above the main content to display additional information or controls. This guide covers Modals, Dropdowns, and Tooltips.
+
+## Modal
+
+The Modal component creates focused overlay dialogs for important content or actions that require user attention.
+
+```tsx
+import { Modal } from "@/components/Modal"
+
+function Demo() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>
+        Open Modal
+      </button>
+
+      <Modal 
+        isOpen={isOpen} 
+        onClose={() => setIsOpen(false)}
+        title="Confirm Action"
+      >
+        <div className="p-4">
+          <p>Are you sure you want to continue?</p>
+          <div className="mt-4 flex justify-end gap-2">
+            <button onClick={() => setIsOpen(false)}>
+              Cancel
+            </button>
+            <button 
+              onClick={() => {
+                // Handle confirmation
+                setIsOpen(false)
+              }}
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </Modal>
+    </>
+  )
+}
+```
+
+### Props
+
+- `isOpen`: boolean - Controls modal visibility
+- `onClose`: () => void - Callback when modal is closed
+- `title`: string - Modal title
+- `children`: React.ReactNode - Modal content
+- `className`: string - Additional CSS classes
+
+## Dropdown
+
+The Dropdown component displays a list of options or actions in a contextual overlay menu.
+
+```tsx
+import { Dropdown } from "@/components/Dropdown"
+
+function Demo() {
+  return (
+    <Dropdown>
+      <Dropdown.Trigger>
+        <button>Options</button>
+      </Dropdown.Trigger>
+      <Dropdown.Content>
+        <Dropdown.Item onClick={() => console.log("Edit")}>
+          Edit
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => console.log("Delete")}>
+          Delete
+        </Dropdown.Item>
+        <Dropdown.Separator />
+        <Dropdown.Item onClick={() => console.log("Archive")}>
+          Archive
+        </Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  )
+}
+```
+
+### Components
+
+- `Dropdown.Trigger` - The element that toggles the dropdown
+- `Dropdown.Content` - Container for dropdown items
+- `Dropdown.Item` - Individual dropdown options
+- `Dropdown.Separator` - Visual separator between items
+
+### Props
+
+#### Dropdown
+- `align`: "start" | "center" | "end" - Alignment of dropdown content
+- `side`: "top" | "right" | "bottom" | "left" - Preferred side for dropdown
+- `className`: string - Additional CSS classes
+
+#### Dropdown.Item
+- `onClick`: () => void - Click handler
+- `disabled`: boolean - Disables the item
+- `className`: string - Additional CSS classes
+
+## Tooltip
+
+The Tooltip component provides additional context or information when users hover over or focus on an element.
+
+```tsx
+import { Tooltip } from "@/components/Tooltip"
+
+function Demo() {
+  return (
+    <Tooltip content="Additional information">
+      <button>Hover me</button>
+    </Tooltip>
+  )
+}
+
+// With custom positioning
+<Tooltip 
+  content="Appears above" 
+  side="top"
+>
+  <button>Top tooltip</button>
+</Tooltip>
+
+// With rich content
+<Tooltip content={
+  <div>
+    <h4 className="font-bold">Title</h4>
+    <p>Detailed explanation</p>
+  </div>
+}>
+  <button>Rich tooltip</button>
+</Tooltip>
+```
+
+### Props
+
+- `content`: React.ReactNode - Tooltip content
+- `side`: "top" | "right" | "bottom" | "left" - Preferred side for tooltip
+- `align`: "start" | "center" | "end" - Alignment of tooltip
+- `delayDuration`: number - Delay before showing tooltip (ms)
+- `className`: string - Additional CSS classes
+
+## Best Practices
+
+1. **Modals**
+   - Use for important actions requiring user focus
+   - Provide clear exit points (close button, escape key)
+   - Maintain proper focus management
+   - Consider mobile responsiveness
+   - Use appropriate animations for smooth transitions
+
+2. **Dropdowns**
+   - Keep lists concise and organized
+   - Group related items
+   - Use separators for visual clarity
+   - Provide keyboard navigation
+   - Consider click-away behavior
+
+3. **Tooltips**
+   - Keep content brief and helpful
+   - Use for supplementary information only
+   - Consider touch devices (tap behavior)
+   - Ensure proper positioning
+   - Add appropriate delays to prevent flicker
+
+### Accessibility Considerations
+
+- Ensure keyboard navigation works properly
+- Maintain proper focus management
+- Use appropriate ARIA attributes
+- Consider screen reader announcements
+- Test with various input methods 

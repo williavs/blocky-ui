@@ -1,0 +1,149 @@
+---
+title: CSS Variables
+description: Complete reference of CSS custom properties used throughout the Blocky Design System.
+---
+
+# CSS Variables
+
+This page provides a comprehensive reference of all CSS custom properties (variables) used in the Blocky Design System. These variables control various aspects of the design system's appearance and can be customized to match your needs.
+
+## Core Variables
+
+### Colors
+
+```css
+/* Light Theme */
+:root {
+  /* Primary Colors */
+  --primary: rgb(187, 247, 208);      /* green-200 */
+  --primary-light: rgb(240, 253, 244); /* green-50 */
+  --primary-dark: rgb(20, 83, 45);     /* green-900 */
+
+  /* Background & Foreground */
+  --background: rgb(240, 253, 244);    /* green-50 */
+  --foreground: rgb(20, 83, 45);       /* green-900 */
+
+  /* Component Colors */
+  --card: white;
+  --card-foreground: rgb(20, 83, 45);
+  --popover: white;
+  --popover-foreground: rgb(20, 83, 45);
+  --menu: white;
+  --menu-foreground: rgb(20, 83, 45);
+
+  /* Borders & Shadows */
+  --border: black;
+  --shadow: rgba(0, 0, 0, 0.85);       /* Dark shadow for light mode */
+  --shadow-hover: rgba(0, 0, 0, 1);     /* Darker shadow for hover */
+
+  /* Interactive States */
+  --ring: rgb(134, 239, 172);          /* green-300 */
+
+  /* Status Colors */
+  --success: rgb(187, 247, 208);       /* green-200 */
+  --warning: rgb(254, 240, 138);       /* yellow-200 */
+  --error: rgb(254, 202, 202);         /* red-200 */
+  --info: rgb(191, 219, 254);          /* blue-200 */
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  /* Primary Colors */
+  --primary: rgb(134, 239, 172);       /* green-300 */
+  --primary-light: rgb(20, 83, 45);    /* green-900 */
+  --primary-dark: rgb(240, 253, 244);  /* green-50 */
+
+  /* Background & Foreground */
+  --background: rgb(17, 24, 39);       /* gray-900 */
+  --foreground: rgb(240, 253, 244);    /* green-50 */
+
+  /* Component Colors */
+  --card: rgb(24, 33, 47);
+  --card-foreground: rgb(240, 253, 244);
+  --popover: rgb(24, 33, 47);
+  --popover-foreground: rgb(240, 253, 244);
+  --menu: rgb(24, 33, 47);
+  --menu-foreground: rgb(240, 253, 244);
+
+  /* Borders & Shadows */
+  --border: rgb(134, 239, 172);        /* green-300 */
+  --shadow: rgba(240, 253, 244, 0.15); /* Light shadow for dark mode */
+  --shadow-hover: rgba(240, 253, 244, 0.25); /* Lighter shadow for hover */
+}
+```
+
+### Typography
+
+```css
+:root {
+  /* Font Families */
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+```
+
+## Component Usage
+
+### Shadows and Borders
+
+Our components use a consistent shadow system that adapts between light and dark modes:
+
+```css
+/* Basic component with shadow */
+.component {
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0px 0px var(--shadow);
+}
+
+/* Hover state with stronger shadow */
+.component:hover {
+  box-shadow: 4px 4px 0px 0px var(--shadow-hover);
+}
+```
+
+### Interactive Elements
+
+Tabs and buttons use our shadow system for state changes:
+
+```css
+.tab {
+  /* Default state */
+  border: 2px solid transparent;
+  transition: all 200ms;
+}
+
+.tab:hover {
+  border-color: var(--border);
+  box-shadow: 4px 4px 0px 0px var(--shadow);
+}
+
+.tab.active {
+  background: var(--primary);
+  border-color: var(--border);
+  box-shadow: 4px 4px 0px 0px var(--shadow-hover);
+}
+```
+
+## Best Practices
+
+1. **Shadow Usage**
+   - Use `--shadow` for default states
+   - Use `--shadow-hover` for active/hover states
+   - Maintain consistent 4px offset for the blocky design
+   - Consider contrast in both light and dark modes
+
+2. **Border Consistency**
+   - Always use 2px borders for the blocky aesthetic
+   - Use `--border` color for visible borders
+   - Combine with shadows for depth
+
+3. **Color Transitions**
+   - Add `transition-colors` for smooth theme switching
+   - Include `duration-200` or `duration-300` for natural feel
+   - Consider using `transition-all` when animating shadows
+
+4. **Dark Mode Considerations**
+   - Use lighter shadows in dark mode for subtle depth
+   - Increase shadow opacity on hover for better feedback
+   - Maintain high contrast for text and interactive elements

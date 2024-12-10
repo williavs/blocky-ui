@@ -1,0 +1,223 @@
+---
+title: Theming
+description: Learn how to customize and theme the Blocky Design System to match your brand.
+---
+
+# Theming
+
+The Blocky Design System is built with customization in mind. This guide will show you how to customize the design system to match your brand's visual identity.
+
+## Design Tokens
+
+Our design system uses a set of design tokens that control the visual appearance of all components. These tokens are implemented as CSS variables and Tailwind CSS classes.
+
+### Colors
+
+The default color palette is built around a green theme with carefully selected shades for different purposes:
+
+```css
+:root {
+  --primary: rgb(187, 247, 208);    /* green-200 */
+  --primary-light: rgb(240, 253, 244); /* green-50 */
+  --primary-dark: rgb(20, 83, 45);   /* green-900 */
+  
+  --background: rgb(240, 253, 244);  /* green-50 */
+  --foreground: rgb(20, 83, 45);     /* green-900 */
+  
+  --border: #000000;
+  --shadow: rgba(0, 0, 0, 1);
+}
+```
+
+### Typography
+
+The design system uses a combination of fonts for different purposes:
+
+```css
+:root {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+```
+
+### Spacing
+
+Our spacing scale is based on a 4px unit:
+
+```css
+:root {
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+}
+```
+
+## Customizing Theme
+
+### Method 1: CSS Variables
+
+The simplest way to customize the theme is by overriding CSS variables:
+
+```css
+:root {
+  --primary: rgb(59, 130, 246);    /* blue-500 */
+  --primary-light: rgb(219, 234, 254); /* blue-100 */
+  --primary-dark: rgb(30, 58, 138);   /* blue-900 */
+}
+```
+
+### Method 2: Tailwind Configuration
+
+For more comprehensive customization, modify your `tailwind.config.js`:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: 'var(--primary)',
+          light: 'var(--primary-light)',
+          dark: 'var(--primary-dark)',
+        },
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+        display: ['var(--font-display)'],
+        mono: ['var(--font-mono)'],
+      },
+    },
+  },
+}
+```
+
+## Component Themes
+
+### Button Variants
+
+Customize button variants by modifying the CSS classes:
+
+```css
+.button-primary {
+  background-color: var(--primary);
+  color: var(--foreground);
+  border: 2px solid var(--border);
+}
+
+.button-outline {
+  background-color: transparent;
+  border: 2px solid var(--border);
+  color: var(--foreground);
+}
+```
+
+### Card Styles
+
+Modify card appearances with custom styles:
+
+```css
+.card {
+  background-color: white;
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0px 0px var(--shadow);
+}
+
+.card-hover {
+  transition: transform 0.2s;
+}
+
+.card-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px var(--shadow);
+}
+```
+
+## Best Practices
+
+1. **Consistent Color Usage**
+   - Use semantic color tokens instead of raw values
+   - Maintain sufficient contrast ratios
+   - Consider color blindness and accessibility
+
+2. **Typography Scale**
+   - Stick to the defined type scale
+   - Use appropriate font weights
+   - Maintain consistent line heights
+
+3. **Spacing System**
+   - Use spacing tokens instead of arbitrary values
+   - Maintain consistent spacing patterns
+   - Consider responsive spacing needs
+
+4. **Component Variants**
+   - Create new variants through the theme system
+   - Document custom variants
+   - Maintain accessibility in custom variants
+
+## Dark Mode
+
+The design system supports dark mode through Tailwind's dark mode feature:
+
+```css
+:root[data-theme="dark"] {
+  --primary: rgb(134, 239, 172);    /* green-300 */
+  --primary-light: rgb(20, 83, 45); /* green-900 */
+  --primary-dark: rgb(240, 253, 244); /* green-50 */
+  
+  --background: rgb(20, 83, 45);    /* green-900 */
+  --foreground: rgb(240, 253, 244); /* green-50 */
+}
+```
+
+To enable dark mode:
+
+```js
+// In your layout component
+const [theme, setTheme] = useState('light')
+
+useEffect(() => {
+  document.documentElement.setAttribute('data-theme', theme)
+}, [theme])
+```
+
+## Examples
+
+### Custom Brand Theme
+
+```css
+:root {
+  /* Purple theme example */
+  --primary: rgb(192, 132, 252);    /* purple-400 */
+  --primary-light: rgb(243, 232, 255); /* purple-50 */
+  --primary-dark: rgb(88, 28, 135);    /* purple-900 */
+  
+  --background: rgb(243, 232, 255);  /* purple-50 */
+  --foreground: rgb(88, 28, 135);    /* purple-900 */
+  
+  /* Custom fonts */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Manrope', system-ui, sans-serif;
+}
+```
+
+### Custom Component Theme
+
+```css
+/* Custom card variant */
+.card-gradient {
+  background: linear-gradient(to right, var(--primary-light), var(--primary));
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0px 0px var(--shadow);
+}
+
+/* Custom button variant */
+.button-gradient {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  color: white;
+  border: 2px solid var(--border);
+}
+``` 

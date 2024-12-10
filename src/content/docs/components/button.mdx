@@ -1,0 +1,122 @@
+---
+title: Button
+description: Interactive button component with multiple variants and sizes.
+---
+
+import { Button } from "@/components/Button"
+import { Download, Share } from "lucide-react"
+
+# Button
+
+Buttons allow users to trigger actions with a single click or tap.
+
+## Examples
+
+### Variants
+
+Our button component comes with several variants to suit different needs:
+
+<div className="flex flex-wrap gap-4">
+  <Button>Click me</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button 
+    variant="download" 
+    leftIcon={<Download className="w-4 h-4" />}
+  >
+    Download
+  </Button>
+  <Button 
+    variant="outline" 
+    rightIcon={<Share className="w-4 h-4" />}
+  >
+    Share
+  </Button>
+</div>
+
+```tsx
+import { Button } from "@/components/Button"
+import { Download, Share } from "lucide-react"
+
+// Default button
+<Button>Click me</Button>
+
+// Outline button
+<Button variant="outline">Outline</Button>
+
+// Ghost button
+<Button variant="ghost">Ghost</Button>
+
+// Download button
+<Button variant="download" leftIcon={<Download className="w-4 h-4" />}>
+  Download
+</Button>
+
+// Share button
+<Button variant="outline" rightIcon={<Share className="w-4 h-4" />}>
+  Share
+</Button>
+```
+
+### Sizes
+
+Buttons come in three sizes to accommodate different use cases:
+
+<div className="flex flex-wrap items-center gap-4">
+  <Button size="sm">Small</Button>
+  <Button>Default</Button>
+  <Button size="lg">Large</Button>
+</div>
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+```
+
+### Loading State
+
+Buttons can show a loading state when processing an action:
+
+<div className="flex flex-wrap gap-4">
+  <Button isLoading>Loading</Button>
+  <Button variant="outline" isLoading>Loading</Button>
+</div>
+
+```tsx
+<Button isLoading>Loading</Button>
+<Button variant="outline" isLoading>Loading</Button>
+```
+
+## Props
+
+The Button component accepts the following props:
+
+- `variant`: "default" | "outline" | "ghost" | "download"
+- `size`: "sm" | "default" | "lg"
+- `isLoading`: boolean
+- `leftIcon`: React.ReactNode
+- `rightIcon`: React.ReactNode
+- `className`: string
+- `disabled`: boolean
+
+Plus all standard button HTML attributes.
+
+## Design Notes
+
+1. **Variants**
+   - Default: Primary action buttons
+   - Outline: Secondary actions
+   - Ghost: Subtle actions
+   - Download: For download actions
+
+2. **Icons**
+   - Can be placed before or after text
+   - Should be 16x16px (w-4 h-4) for default size
+   - Align naturally with text
+
+3. **States**
+   - Hover: Slight lift effect with larger shadow
+   - Active: Pressed down effect
+   - Loading: Shows spinner, disables button
+   - Disabled: Reduced opacity
