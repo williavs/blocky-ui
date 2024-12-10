@@ -34,3 +34,7 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Netlify deployment state
+.netlify.state.json
+.netlify.toml.backup
