@@ -1,13 +1,14 @@
-import React from "react";
 import { cn } from "../utils/cn";
 import { Loader2 } from "lucide-react";
+import type { ButtonHTMLAttributes } from "react";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "default" | "outline" | "ghost" | "download";
   size?: "default" | "sm" | "lg";
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function Button({
@@ -20,6 +21,18 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
+  const renderLeftIcon = !isLoading && leftIcon && (
+    <span className="inline-flex shrink-0 items-center justify-center">
+      {leftIcon}
+    </span>
+  );
+
+  const renderRightIcon = !isLoading && rightIcon && (
+    <span className="inline-flex shrink-0 items-center justify-center">
+      {rightIcon}
+    </span>
+  );
+
   return (
     <button
       className={cn(
@@ -41,22 +54,12 @@ export function Button({
       disabled={isLoading}
       {...props}
     >
-      {isLoading && (
-        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-      )}
-      {!isLoading && leftIcon && (
-        <span className="inline-flex shrink-0 items-center justify-center">
-          {leftIcon}
-        </span>
-      )}
+      {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+      {renderLeftIcon}
       <span className="inline-flex items-center justify-center leading-none">
         {children}
       </span>
-      {!isLoading && rightIcon && (
-        <span className="inline-flex shrink-0 items-center justify-center">
-          {rightIcon}
-        </span>
-      )}
+      {renderRightIcon}
     </button>
   );
 }

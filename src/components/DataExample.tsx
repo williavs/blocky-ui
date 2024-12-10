@@ -1,139 +1,89 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { db, type ExampleItem } from '../utils/db';
-import { Card } from './Card';
 import { Button } from './Button';
-import { Badge } from './Badge';
-import { Input } from './Input';
-import { Plus, Trash2 } from 'lucide-react';
-import { cn } from '../utils/cn';
+import { Plus } from 'lucide-react';
 
 export function DataExample() {
   const [items, setItems] = useState<ExampleItem[]>([]);
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+
+  const loadItems = async () => {
+    try {
+      const items = await db.getAllItems();
+      setItems(items);
+    } catch (error) {
+      console.error('Error loading items:', error);
+    }
+  };
 
   useEffect(() => {
-    const initDB = async () => {
-      try {
-        await db.init();
-        const items = await db.getAllItems();
-        setItems(items);
-      } catch (error) {
-        console.error('Failed to initialize DB:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    initDB();
+    db.init().then(() => {
+      loadItems();
+    });
   }, []);
 
-  const addItem = async () => {
+  const handleAddItem = async () => {
     if (!newTitle.trim()) return;
 
     try {
-      const id = await db.addItem({
+      await db.addItem({
         title: newTitle,
         description: newDescription,
         status: 'active',
         createdAt: new Date(),
       });
-
-      const items = await db.getAllItems();
-      setItems(items);
+      await loadItems();
       setNewTitle('');
       setNewDescription('');
     } catch (error) {
-      console.error('Failed to add item:', error);
+      console.error('Error adding item:', error);
     }
   };
-
-  const deleteItem = async (id: number) => {
-    try {
-      await db.deleteItem(id);
-      setItems(items.filter(item => item.id !== id));
-    } catch (error) {
-      console.error('Failed to delete item:', error);
-    }
-  };
-
-  const toggleStatus = async (item: ExampleItem) => {
-    try {
-      const newStatus: 'active' | 'archived' = item.status === 'active' ? 'archived' : 'active';
-      const updatedItem: ExampleItem = {
-        ...item,
-        status: newStatus,
-      };
-      await db.updateItem(updatedItem);
-      setItems(items.map(i => i.id === item.id ? updatedItem : i));
-    } catch (error) {
-      console.error('Failed to update item:', error);
-    }
-  };
-
-  if (isLoading) {
-    return <div className="animate-pulse">Loading...</div>;
-  }
 
   return (
-    <div className="space-y-6">
-      <Card className="p-6 space-y-4">
-        <h3 className="font-display font-bold text-lg">Add New Item</h3>
-        <div className="space-y-3">
-          <Input
-            placeholder="Title"
+    <div className="space-y-4">
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">Title</label>
+          <input
+            type="text"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
+            className="w-full px-3 py-2 border-2 border-black rounded-md"
           />
-          <Input
-            placeholder="Description"
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Description</label>
+          <textarea
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
+            className="w-full px-3 py-2 border-2 border-black rounded-md"
           />
-          <Button onClick={addItem} className="w-full">
-            <Plus className="w-4 h-4 mr-2" />
-            Add Item
-          </Button>
         </div>
-      </Card>
+        <Button onClick={handleAddItem} className="w-full">
+          <Plus className="w-4 h-4 mr-2" />
+          Add Item
+        </Button>
+      </div>
 
       <div className="space-y-4">
         {items.map((item) => (
-          <Card
+          <div
             key={item.id}
-            className={cn(
-              "p-4 transition-all",
-              item.status === 'archived' && "opacity-75"
-            )}
+            className="p-4 border-2 border-black rounded-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
-            <div className="flex items-start justify-between gap-4">
-              <div className="space-y-1 flex-1">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-display font-semibold">{item.title}</h3>
-                  <Badge
-                    variant={item.status === 'active' ? 'success' : 'outline'}
-                    className="cursor-pointer"
-                    onClick={() => toggleStatus(item)}
-                  >
-                    {item.status}
-                  </Badge>
-                </div>
-                <p className="text-sm text-green-900">{item.description}</p>
-                <p className="text-xs text-green-900/60">
-                  Created: {new Date(item.createdAt).toLocaleDateString()}
-                </p>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-red-500 hover:text-red-600"
-                onClick={() => deleteItem(item.id)}
-              >
-                <Trash2 className="w-4 h-4" />
-              </Button>
+            <h3 className="font-bold">{item.title}</h3>
+            <p className="text-sm text-gray-600">{item.description}</p>
+            <div className="mt-2 flex items-center gap-2">
+              <span className="text-xs bg-green-100 px-2 py-1 rounded-full">
+                {item.status}
+              </span>
+              <span className="text-xs text-gray-500">
+                {new Date(item.createdAt).toLocaleDateString()}
+              </span>
             </div>
-          </Card>
+          </div>
         ))}
       </div>
     </div>

@@ -21,15 +21,24 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'jsxRuntime'
-        }
+        },
+        preserveModules: true,
+        preserveModulesRoot: 'src'
       }
     },
     sourcemap: true,
-    minify: false
+    minify: false,
+    outDir: 'dist',
+    emptyOutDir: true,
+    target: 'esnext'
   },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src')
     }
+  },
+  esbuild: {
+    jsxInject: `import React from 'react'`,
+    jsx: 'automatic'
   }
 }); 

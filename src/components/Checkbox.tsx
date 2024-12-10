@@ -1,15 +1,27 @@
 import { cn } from "../utils/cn";
 import { Check } from "lucide-react";
-import React from "react";
+import type { InputHTMLAttributes } from "react";
 
-export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
   error?: boolean;
   id?: string;
 }
 
-export function Checkbox({ className, label, error, id: providedId, ...props }: CheckboxProps) {
+export function Checkbox({ 
+  className, 
+  label, 
+  error, 
+  id: providedId, 
+  ...props 
+}: CheckboxProps) {
   const uniqueId = providedId || `checkbox-${Math.random().toString(36).substr(2, 9)}`;
+
+  const labelClasses = cn(
+    "text-sm font-medium select-none",
+    error ? "text-red-500" : "text-green-900",
+    "group-hover:text-green-800 transition-colors"
+  );
 
   return (
     <label 
@@ -43,15 +55,7 @@ export function Checkbox({ className, label, error, id: providedId, ...props }: 
           )}
         />
       </div>
-      {label && (
-        <span className={cn(
-          "text-sm font-medium select-none",
-          error ? "text-red-500" : "text-green-900",
-          "group-hover:text-green-800 transition-colors"
-        )}>
-          {label}
-        </span>
-      )}
+      {label ? <span className={labelClasses}>{label}</span> : null}
     </label>
   );
 } 

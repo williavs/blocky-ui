@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:lib": "npm run build:css && tsc --project tsconfig.lib.json && vite build --config vite.lib.config.ts",
+    "build:lib": "npm run build:css && tsc --project tsconfig.lib.json",
     "build:css": "tailwindcss -i src/index.css -o dist/style.css",
     "preview": "vite preview",
     "prepublishOnly": "npm run build:lib"
@@ -63,7 +63,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/williavs/blocky-ui"
+    "url": "git+https://github.com/williavs/blocky-ui.git"
   },
   "bugs": {
     "url": "https://github.com/williavs/blocky-ui/issues"
