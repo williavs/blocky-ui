@@ -16,11 +16,10 @@ export function ThemeProvider({
 }) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
+  // Apply light mode immediately
   useEffect(() => {
-    // Remove system preference check, always start with light mode
-    setTheme('light');
     document.documentElement.classList.remove('dark');
-  }, []);
+  }, []); // Empty dependency array ensures this runs once on mount
 
   const toggleTheme = () => {
     setTheme((prev) => {
